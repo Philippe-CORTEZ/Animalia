@@ -36,4 +36,4 @@ proguard/
 *.ear%
 
 # ssl
-/src/main/resources/ssl/
+src/main/resources/ssl/*
