@@ -1,5 +1,8 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.util.List;
@@ -14,9 +17,12 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
 public class Refuge
 {
     /** Le nom du refuge */
+    @Id
     private String nom;
 
     /** L'adresse du refuge */
@@ -27,6 +33,7 @@ public class Refuge
     private String description;
 
     /** Les animaux séjournant dans le refuge ainsi que leurs informations */
+    @OneToMany(mappedBy = "refuge")
     private List<InformationSejour> informationSejours;
 
 
