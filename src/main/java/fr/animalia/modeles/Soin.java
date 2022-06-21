@@ -1,5 +1,7 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Objects;
@@ -13,9 +15,12 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
 public class Soin
 {
     /** Le nom du soin */
+    @Id
     private String nom;
 
     /** Une description du soin */
