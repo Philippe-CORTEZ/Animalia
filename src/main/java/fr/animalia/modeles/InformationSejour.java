@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -14,26 +15,38 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
+@Table(name = "INFORMATION_SEJOUR", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_SEJOUR", columnNames = {"NUM_PUCE_ANIMAL", "NOM_REFUGE", "DATE_DEBUT_SEJOUR"}) })
 public class InformationSejour
 {
     /** ID automatiquement généré par la base de données */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /** L'animal qui passe le séjour */
+    @ManyToOne
+    @JoinColumn(name = "NUM_PUCE_ANIMAL")
     private Animal pensionnaire;
 
     /** Le refuge où l'animal a passé son séjour */
+    @ManyToOne
+    @JoinColumn(name = "NOM_REFUGE")
     private Refuge refuge;
 
     /** Date d'arrivée au refuge */
+    @Column(name = "DATE_DEBUT_SEJOUR")
     private LocalDate dateDebutSejour;
 
     /** Date de départ du refuge */
     @Setter
+    @Column(name = "DATE_FIN_SEJOUR")
     private LocalDate dateFinSejour;
 
     /** Les raisons du départ du refuge */
     @Setter
+    @Column(name = "MOTIF_FIN_SEJOUR")
     private String motifFinDeSejour;
 
 
