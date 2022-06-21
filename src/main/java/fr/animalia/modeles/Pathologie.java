@@ -1,5 +1,7 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,9 +18,12 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
 public class Pathologie
 {
     /** Le nom de la pathologie */
+    @Id
     private String nom;
 
     /** La description de la pathologie */
