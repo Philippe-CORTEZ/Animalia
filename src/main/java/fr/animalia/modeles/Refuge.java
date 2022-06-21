@@ -2,6 +2,7 @@ package fr.animalia.modeles;
 
 import lombok.*;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -24,6 +25,9 @@ public class Refuge
     /** Description du refuge */
     @Setter
     private String description;
+
+    /** Les animaux séjournant dans le refuge ainsi que leurs informations */
+    private List<InformationSejour> informationSejours;
 
 
 
