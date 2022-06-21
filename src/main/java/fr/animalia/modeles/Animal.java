@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -16,15 +17,20 @@ import java.util.UUID;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
 public class Animal
 {
     /** Le numéro de puce électronique */
+    @Id
+    @Column(name = "NUM_PUCE")
     private UUID numPuce;
 
     /** Le nom de l'animal */
     private String nom;
 
     /** La date de naissance de l'animal */
+    @Column(name = "DATE_NAISSANCE")
     private LocalDate dateNaissance;
 
     /** Le sexe de l'animal (male ou femelle) */
@@ -45,12 +51,17 @@ public class Animal
     private boolean sos;
 
     /** Les pathologies dont est atteint l'animal */
+    @ManyToMany
+    @JoinTable(name = "PATHOLOGIES_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "NOM_PATHOLOGIE")})
     private List<Pathologie> pathologies;
 
     /** Les soins qu'a reçus l'animal */
+    @ManyToMany
+    @JoinTable(name = "SOINS_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "NOM_SOINS")})
     private List<Soin> soins;
 
     /** Les informations d'adoptions de l'animal (maître, date, ...) */
+    @OneToMany(mappedBy = "animal")
     private List<InformationAdoption> informationAdoptions;
 
 
