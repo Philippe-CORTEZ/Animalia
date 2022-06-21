@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,26 +14,38 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
+@Table(name = "INFORMATION_ADOPTION", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_ADOPTION", columnNames = {"NUM_PUCE_ANIMAL", "NUM_MAITRE"}) })
 public class InformationAdoption
 {
     /** ID automatiquement généré par la base de données */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /** La maître adoptant */
+    @ManyToOne
+    @JoinColumn(name = "NUM_MAITRE")
     private Personne maitre;
 
     /** L'animal adopté */
+    @ManyToOne
+    @JoinColumn(name = "NUM_PUCE_ANIMAL")
     private Animal animal;
 
     /** La date de l'adoption */
+    @Column(name = "DATE_ADOPTION")
     private LocalDate dateAdoption;
 
     /** La date du retour d'adoption (si l'adoption s'est mal passée) */
     @Setter
+    @Column(name = "DATE_RETOUR")
     private LocalDate dateRetour;
 
     /** Indique si l'adoption s'est terminée par un retour */
     @Setter
+    @Column(name = "RETOUR_ADOPTION")
     private boolean retourAdoption;
 
     /** Cotisation versée pour cette adoption */
