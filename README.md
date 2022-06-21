@@ -4,24 +4,26 @@
 
 
 
-## I. Contexte
+## Contexte
 
-La société « Animalia » gère plusieurs refuges pour animaux le but étant de prendre soin de ses pensionnaires et sur les long termes l’adoption de ses derniers. La société voudrait moderniser la manière dont elle gère la liste de ses pensionnaires, les adoptions, les soins effectués et aussi par la même occasion mettre en place une solution pour présenter ses pensionnaires aux futur utilisateurs de son système. Jusqu’à présent ceci était fait de manière manuscrite, une tâche qui s’avère parfois longue et pénible.
+La société « Animalia » gère plusieurs refuges pour animaux le but étant de prendre soin de ses pensionnaires et sur les long termes l’adoption de ses derniers.  
+La société voudrait moderniser la manière dont elle gère la liste de ses pensionnaires, les adoptions, les soins effectués et aussi par la même occasion mettre en place une solution pour présenter ses pensionnaires aux futur utilisateurs de son système.  
+Jusqu’à présent ceci était fait de manière manuscrite, une tâche qui s’avère parfois longue et pénible.  
 
 
 
-## II. Besoins et informations utiles
+## Besoins et informations utiles
 
-Enregistrer un animal
-Consulter la liste des pensionnaires
-Retracer et connaître les informations concernant un animal (numéro de puce, nom, age, sexe, refuges, traitements médicaux, pathologies, ...)
-Enregistrer une personne (un futur maître)
-Enregistrer une adoption
+Enregistrer un animal  
+Consulter la liste des pensionnaires  
+Retracer et connaître les informations concernant un animal (numéro de puce, nom, age, sexe, refuges, traitements médicaux, pathologies, ...)  
+Enregistrer une personne (un futur maître)  
+Enregistrer une adoption  
 
 
 Concernant chaque animal :
 
-    • Dès qu'un animal est pris en charge pour la première fois dans un des refuges, ce dernier est pucé s'il ne l'est pas déjà. Pour permettre facilement l’identification.
+    • Dès qu'un animal est pris en charge pour la première fois dans un des refuges, ce dernier est pucé s'il ne l'est pas déjà. Pour permettre facilement l’identification.  
     • Connaitre ou à défaut attribuer un nom.
     • Identifier son espèce.
     • Pour certaine espèce connaître eventuellement sa race.
@@ -51,3 +53,18 @@ Concernant les adoptions :
 
 
 
+## Installation et exécution 
+
+A venir
+
+
+
+## Utilisation
+
+A venir
+
+
+
+## Contributeur
+
+* Philippe CORTEZ
