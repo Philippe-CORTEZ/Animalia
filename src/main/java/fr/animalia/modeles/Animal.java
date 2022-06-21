@@ -3,6 +3,7 @@ package fr.animalia.modeles;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -42,6 +43,15 @@ public class Animal
     /** SOS = animal à adopter en urgence, cotisation libre */
     @Setter
     private boolean sos;
+
+    /** Les pathologies dont est atteint l'animal */
+    private List<Pathologie> pathologies;
+
+    /** Les soins qu'a reçus l'animal */
+    private List<Soin> soins;
+
+    /** Les informations d'adoptions de l'animal (maître, date, ...) */
+    private List<InformationAdoption> informationAdoptions;
 
 
 
