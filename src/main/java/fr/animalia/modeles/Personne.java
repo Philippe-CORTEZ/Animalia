@@ -1,5 +1,8 @@
 package fr.animalia.modeles;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,9 +18,13 @@ import java.util.UUID;
 @AllArgsConstructor
 
 @Getter
+
+@Entity
 public class Personne
 {
     /** L'identifiant d'une personne en tant que maître*/
+    @Id
+    @Column(name = "NUM_MAITRE")
     private UUID numMaitre;
 
     /** Le nom de la personne */
@@ -27,6 +34,7 @@ public class Personne
     private String prenom;
 
     /** Date de naissance de la personne */
+    @Column(name = "DATE_NAISSANCE")
     private LocalDate dateNaissance;
 
     /** L'adresse de la personne */
