@@ -1,0 +1,34 @@
+@startuml uc_enregistrer_adoption
+
+title UC : Enregistrer une adoption
+
+actor Gestionnaire
+
+Gestionnaire -> SI : Enregistrer une adoption
+SI --> Gestionnaire : OK, choix du maître
+
+alt Maitre connu
+    Gestionnaire -> SI : Choix du maître
+
+else Maitre non connu
+    ref over Gestionnaire, SI : VOIR UC : Enregistrer un maître
+    Gestionnaire -> SI : Choix du maître
+end
+
+SI --> Gestionnaire : OK, affichage formulaire d'adoption
+
+loop TANT QUE : Saisie invalide
+    Gestionnaire -> SI : Saisie formulaire
+    SI -> SI : Vérification formulaire
+
+    alt saisie valide
+        SI --> Gestionnaire : Formulaire OK
+    else sasie invalide
+        SI --> Gestionnaire : Formulaire invalide
+    end
+
+end
+
+SI --> Gestionnaire : Adoption finalisée
+
+@enduml
