@@ -3,6 +3,8 @@ package fr.animalia.modeles;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Une personne est reconnue par ses informations personnelles (nom, prénom, date naissance)
@@ -16,7 +18,7 @@ import java.time.LocalDate;
 public class Personne
 {
     /** L'identifiant d'une personne en tant que maître*/
-    private long numMaitre;
+    private UUID numMaitre;
 
     /** Le nom de la personne */
     private String nom;
@@ -42,14 +44,14 @@ public class Personne
 
         Personne personne = (Personne) o;
 
-        return numMaitre == personne.numMaitre;
+        return Objects.equals(numMaitre, personne.numMaitre);
     }
 
     /** Redéfinition de hashCode */
     @Override
     public int hashCode()
     {
-        return (int) (numMaitre ^ (numMaitre >>> 32));
+        return numMaitre != null ? numMaitre.hashCode() : 0;
     }
 
     /** Redéfinition de toString */
