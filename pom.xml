@@ -89,21 +89,12 @@
       <version>42.3.6</version>
     </dependency>
 
-    <!-- Implantation pour JPA (Hibernate) -->
+    <!-- Implantation pour JPA (Eclipslink) -->
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>6.1.0.Final</version>
-      <type>pom</type>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <version>3.1.0-M1</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>6.0.0.Alpha7</version>
-    </dependency>
-
-
 
     <!-- SLF4J liaison simple avec le logger du JDK -->
     <dependency>

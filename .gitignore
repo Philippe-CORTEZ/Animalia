@@ -37,3 +37,6 @@ proguard/
 
 # ssl
 src/main/resources/ssl/*
+
+# JPA
+*.ddl

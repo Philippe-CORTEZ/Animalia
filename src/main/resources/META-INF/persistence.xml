@@ -6,7 +6,7 @@
 
     <persistence-unit name="Animalia" transaction-type="RESOURCE_LOCAL">
         <!-- Implantation de JPA utilisée -->
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <!-- Les entités à gérés ici toutes les entités seront gérées par la même unité de persistance -->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
@@ -20,10 +20,10 @@
             <property name="jakarta.persistence.jdbc.password" value="test"/> <!-- pas sécurisé -->
 
             <!-- Les options de générations des tables -->
-<!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
-<!--            <property name="jakarta.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
-<!--            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="creationTable.ddl"/>-->
-<!--            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="suppressionTable.ddl"/>-->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="creationTable.ddl"/>
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="suppressionTable.ddl"/>
 
             <!-- Script pour insérer les entités -->
 <!--            <property name="jakarta.persistence.sql-load-script-source" value="sql/insertion.sql"/>-->
