@@ -34,6 +34,7 @@ public class Animal
     private LocalDate dateNaissance;
 
     /** Le sexe de l'animal (male ou femelle) */
+    @Enumerated(EnumType.STRING)
     private EnumSexe sexe;
 
     /** L'espèce de l'animal (chien, chat, cheval, ...) */
