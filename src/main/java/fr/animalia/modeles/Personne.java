@@ -7,8 +7,6 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.UUID;
 
 /**
  * Une personne est reconnue par ses informations personnelles (nom, prénom, date naissance)
@@ -24,13 +22,13 @@ import java.util.UUID;
 
 @JsonTypeName("personne")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "numMaitre", scope = Personne.class)
-public class Personne
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Personne.class)
+public class Personne implements Entite
 {
     /** L'identifiant d'une personne en tant que maître*/
     @Id
     @Column(name = "NUM_MAITRE")
-    private UUID numMaitre;
+    private long id;
 
     /** Le nom de la personne */
     private String nom;
@@ -58,14 +56,14 @@ public class Personne
 
         Personne personne = (Personne) o;
 
-        return Objects.equals(numMaitre, personne.numMaitre);
+        return id == personne.id;
     }
 
     /** Redéfinition de hashCode */
     @Override
     public int hashCode()
     {
-        return numMaitre != null ? numMaitre.hashCode() : 0;
+        return (int) (id ^ (id >>> 32));
     }
 
     /** Redéfinition de toString */
@@ -73,7 +71,7 @@ public class Personne
     public String toString()
     {
         return "Personne{" +
-                "numMaitre=" + numMaitre +
+                "numMaitre=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", dateNaissance=" + dateNaissance +

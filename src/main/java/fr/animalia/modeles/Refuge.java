@@ -1,9 +1,7 @@
 package fr.animalia.modeles;
 
 import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -20,15 +18,20 @@ import java.util.Objects;
 @Getter
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(name = "PKK_Refuge", columnNames = {"nom"}) })
 
 @JsonTypeName("refuge")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "nom", scope = Refuge.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Refuge.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Refuge
+public class Refuge implements Entite
 {
-    /** Le nom du refuge */
+    /** ID automatiquement généré par la base de données */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    /** Le nom du refuge */
     private String nom;
 
     /** L'adresse du refuge */

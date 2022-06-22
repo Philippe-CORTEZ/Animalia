@@ -24,7 +24,7 @@ import java.util.Objects;
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InformationSejour.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class InformationSejour
+public class InformationSejour implements Entite
 {
     /** ID automatiquement généré par la base de données */
     @Id

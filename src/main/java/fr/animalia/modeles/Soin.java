@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
@@ -21,14 +20,19 @@ import java.util.Objects;
 @Getter
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(name = "PKK_Soin", columnNames = {"nom"}) })
 
 @JsonTypeName("soin")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "nom", scope = Soin.class)
-public class Soin
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Soin.class)
+public class Soin implements Entite
 {
-    /** Le nom du soin */
+    /** ID automatiquement généré par la base de données */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    /** Le nom du soin */
     private String nom;
 
     /** Une description du soin */

@@ -23,7 +23,7 @@ import java.util.Objects;
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InformationAdoption.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class InformationAdoption
+public class InformationAdoption implements Entite
 {
     /** ID automatiquement généré par la base de données */
     @Id

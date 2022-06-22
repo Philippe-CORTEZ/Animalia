@@ -6,8 +6,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 
 /**
  * Représente les éléments de bases que possède un animal
@@ -23,14 +21,14 @@ import java.util.UUID;
 
 @JsonTypeName("animal")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "numPuce", scope = Animal.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Animal.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Animal
+public class Animal implements Entite
 {
     /** Le numéro de puce électronique */
     @Id
     @Column(name = "NUM_PUCE")
-    private UUID numPuce;
+    private long id;
 
     /** Le nom de l'animal */
     private String nom;
@@ -89,14 +87,14 @@ public class Animal
 
         Animal animal = (Animal) o;
 
-        return Objects.equals(numPuce, animal.numPuce);
+        return id == animal.id;
     }
 
     /** Redéfinition de hashCode */
     @Override
     public int hashCode()
     {
-        return numPuce != null ? numPuce.hashCode() : 0;
+        return (int) (id ^ (id >>> 32));
     }
 
     /** Redéfinition de toString */
@@ -104,7 +102,7 @@ public class Animal
     public String toString()
     {
         return "Animal{" +
-                "numPuce=" + numPuce +
+                "numPuce=" + id +
                 ", nom='" + nom + '\'' +
                 ", dateNaissance=" + dateNaissance +
                 ", sexe=" + sexe +
