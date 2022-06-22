@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "INFORMATION_SEJOUR", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_SEJOUR", columnNames = {"NUM_PUCE_ANIMAL", "NOM_REFUGE", "DATE_DEBUT_SEJOUR"}) })
+
+@JsonTypeName("information_sejour")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InformationSejour.class)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class InformationSejour
 {
     /** ID automatiquement généré par la base de données */
@@ -37,11 +43,13 @@ public class InformationSejour
 
     /** Date d'arrivée au refuge */
     @Column(name = "DATE_DEBUT_SEJOUR")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDebutSejour;
 
     /** Date de départ du refuge */
     @Setter
     @Column(name = "DATE_FIN_SEJOUR")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateFinSejour;
 
     /** Les raisons du départ du refuge */
