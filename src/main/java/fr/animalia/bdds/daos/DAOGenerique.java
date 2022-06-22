@@ -1,5 +1,6 @@
 package fr.animalia.bdds.daos;
 
+import fr.animalia.modeles.Entite;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -13,7 +14,7 @@ import java.util.List;
  * @param <E> le type générique des entités
  * @author Philippe CORTEZ
  */
-public abstract class DAOGenerique<E> implements DAO<E>
+public abstract class DAOGenerique<E extends Entite> implements DAO<E>
 {
     /** Le nom de l'unité de persistance (décrit dans persistence.xml) */
     // Cette facon de faire est correcte que si toutes les DAOs heritees de cette classe travaillent sur la meme unite de persistance
