@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,6 +21,10 @@ import java.util.UUID;
 @Getter
 
 @Entity
+
+@JsonTypeName("personne")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "numMaitre", scope = Personne.class)
 public class Personne
 {
     /** L'identifiant d'une personne en tant que maître*/
@@ -35,6 +40,7 @@ public class Personne
 
     /** Date de naissance de la personne */
     @Column(name = "DATE_NAISSANCE")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateNaissance;
 
     /** L'adresse de la personne */
