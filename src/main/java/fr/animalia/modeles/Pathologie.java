@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Objects;
 
@@ -19,6 +16,7 @@ import java.util.Objects;
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 
 @Getter
 
@@ -31,9 +29,10 @@ import java.util.Objects;
 public class Pathologie implements Entite
 {
     /** ID automatiquement généré par la base de données */
+    @Builder.Default
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id = -1;
 
     /** Le nom de la pathologie */
     private String nom;

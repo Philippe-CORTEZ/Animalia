@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 
 @Getter
 
@@ -57,24 +59,27 @@ public class Animal implements Entite
     private boolean sos;
 
     /** Les pathologies dont est atteint l'animal */
+    @Builder.Default
     @ManyToMany
     @JoinTable(name = "PATHOLOGIES_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "NOM_PATHOLOGIE")})
     @JsonProperty("nom_pathologie")
     @JsonIdentityReference(alwaysAsId = true)
-    private List<Pathologie> pathologies;
+    private List<Pathologie> pathologies = new ArrayList<>();
 
     /** Les soins qu'a reçus l'animal */
+    @Builder.Default
     @ManyToMany
     @JoinTable(name = "SOINS_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "NOM_SOINS")})
     @JsonProperty("nom_soin")
     @JsonIdentityReference(alwaysAsId = true)
-    private List<Soin> soins;
+    private List<Soin> soins = new ArrayList<>();
 
     /** Les informations d'adoptions de l'animal (maître, date, ...) */
+    @Builder.Default
     @OneToMany(mappedBy = "animal")
     @JsonProperty("id_info_adoption")
     @JsonIdentityReference(alwaysAsId = true)
-    private List<InformationAdoption> informationAdoptions;
+    private List<InformationAdoption> informationAdoptions = new ArrayList<>();
 
 
 

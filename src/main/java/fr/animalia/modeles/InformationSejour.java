@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 
 @Getter
 
@@ -27,9 +28,10 @@ import java.util.Objects;
 public class InformationSejour implements Entite
 {
     /** ID automatiquement généré par la base de données */
+    @Builder.Default
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id = -1;
 
     /** L'animal qui passe le séjour */
     @ManyToOne
