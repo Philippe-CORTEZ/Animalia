@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * Un refuge accueil des animaux, en attendant qu'ils soient adoptés
- * Un refuge se distingue par son nom ET son adresse
+ * Un refuge se distingue par son nom
  * @author Philippe CORTEZ
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
