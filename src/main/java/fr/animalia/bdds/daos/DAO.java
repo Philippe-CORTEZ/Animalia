@@ -63,4 +63,12 @@ public interface DAO<E>
      */
     List<E> rechercherTout();
 
+    /**
+     * Récupère toutes les entités d'un type particulier avec le nom voulu
+     * Ceci est possible, car toutes les entités possible de récupérer possèdent bien un champ nom
+     * @param nom le nom recherché
+     * @return une liste d'entités
+     */
+    public List<E> rechercherParNom(String nom);
+
 }
