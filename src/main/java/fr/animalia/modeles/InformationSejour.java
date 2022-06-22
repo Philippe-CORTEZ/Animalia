@@ -19,7 +19,7 @@ import java.util.Objects;
 @Getter
 
 @Entity
-@Table(name = "INFORMATION_SEJOUR", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_SEJOUR", columnNames = {"NUM_PUCE_ANIMAL", "NOM_REFUGE", "DATE_DEBUT_SEJOUR"}) })
+@Table(name = "INFORMATION_SEJOUR", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_SEJOUR", columnNames = {"NUM_PUCE_ANIMAL", "ID_REFUGE", "DATE_DEBUT_SEJOUR"}) })
 
 @JsonTypeName("information_sejour")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
@@ -40,7 +40,7 @@ public class InformationSejour implements Entite
 
     /** Le refuge où l'animal a passé son séjour */
     @ManyToOne
-    @JoinColumn(name = "NOM_REFUGE")
+    @JoinColumn(name = "ID_REFUGE")
     private Refuge refuge;
 
     /** Date d'arrivée au refuge */

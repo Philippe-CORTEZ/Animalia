@@ -18,12 +18,12 @@ public interface DAO<E>
     E persister(E entite);
 
     /**
-     * Renvoie une entité dont clé primaire est spécifiée
+     * Renvoie une entité dont l'id est spécifiée
      * Equivalent au find de l'entity manager
-     * @param id la clé primaire pour identifier l'entité à récupérer
+     * @param id l'identifiant l'entité à récupérer
      * @return un objet de type E
      */
-    E rechercher(Object id);
+    E rechercher(long id);
 
     /**
      * Rafraichit l'entité spécifiée avec les données de la base de données

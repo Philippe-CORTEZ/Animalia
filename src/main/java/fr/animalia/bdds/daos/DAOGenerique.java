@@ -66,13 +66,13 @@ public abstract class DAOGenerique<E extends Entite> implements DAO<E>
     }
 
     /**
-     * Renvoie une entité dont la clé primaire sont spécifiée
+     * Renvoie une entité dont l'id sont spécifiée
      * Equivalent au find de l'entity manager
-     * @param id la clé primaire pour identifier l'entité à récupérer
+     * @param id l'identifiant l'entité à récupérer
      * @return un objet de type E
      */
     @Override
-    public E rechercher(Object id)
+    public E rechercher(long id)
     {
         return entityManager.find(type, id);
     }
