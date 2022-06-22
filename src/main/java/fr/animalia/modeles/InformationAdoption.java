@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "INFORMATION_ADOPTION", uniqueConstraints = {@UniqueConstraint(name = "PKK_INFO_ADOPTION", columnNames = {"NUM_PUCE_ANIMAL", "NUM_MAITRE"}) })
+
+@JsonTypeName("information_adoption")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InformationAdoption.class)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class InformationAdoption
 {
     /** ID automatiquement généré par la base de données */
@@ -36,11 +42,13 @@ public class InformationAdoption
 
     /** La date de l'adoption */
     @Column(name = "DATE_ADOPTION")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateAdoption;
 
     /** La date du retour d'adoption (si l'adoption s'est mal passée) */
     @Setter
     @Column(name = "DATE_RETOUR")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateRetour;
 
     /** Indique si l'adoption s'est terminée par un retour */
