@@ -1,5 +1,6 @@
 package fr.animalia.modeles;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -19,6 +20,11 @@ import java.util.Objects;
 @Getter
 
 @Entity
+
+@JsonTypeName("refuge")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "nom", scope = Refuge.class)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Refuge
 {
     /** Le nom du refuge */
@@ -34,6 +40,8 @@ public class Refuge
 
     /** Les animaux séjournant dans le refuge ainsi que leurs informations */
     @OneToMany(mappedBy = "refuge")
+    @JsonProperty("id_info_sejour")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<InformationSejour> informationSejours;
 
 
