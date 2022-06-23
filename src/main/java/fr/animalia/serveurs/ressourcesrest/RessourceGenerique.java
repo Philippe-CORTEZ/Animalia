@@ -44,6 +44,7 @@ public abstract class RessourceGenerique<E extends Entite> implements Ressource<
      */
     @Override
     @GET
+    @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<E> recupererToutesRessources()
     {
