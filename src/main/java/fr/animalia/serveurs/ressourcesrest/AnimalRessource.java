@@ -1,11 +1,9 @@
 package fr.animalia.serveurs.ressourcesrest;
 
 import fr.animalia.bdds.daos.AnimalDAO;
+import fr.animalia.bdds.daos.RefugeDAO;
 import fr.animalia.modeles.Animal;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
@@ -53,6 +51,13 @@ public class AnimalRessource extends RessourceGenerique<Animal>
     public List<Animal> recupererParSOS()
     {
         return animalDAO.rechercherParSOS();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Animal> recupererParRefuge(@QueryParam("nomRefuge") String nomRefuge)
+    {
+        return new RefugeDAO().rechercherParRefuge(nomRefuge);
     }
 
 }
