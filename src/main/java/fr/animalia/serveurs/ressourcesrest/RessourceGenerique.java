@@ -101,16 +101,27 @@ public abstract class RessourceGenerique<E extends Entite> implements Ressource<
     /**
      * Met à jour l'entièreté d'une ressource spécifiée
      * @param ressource une ressource avec le media type adéquat
+     * @param id l'id de la ressource à mettre à jour
      * @return la ressource à jour avec le media type adéquat
      */
     @Override
     @PUT
+    @Path("{id: [0-9]+}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public E miseAJourRessource(E ressource)
+    public E miseAJourRessource(E ressource, @PathParam("id") long id)
     {
-        dao.miseAJour(ressource);
-        return ressource;
+        // Recherche si la ressource specifie existe bien
+        E rsc = dao.rechercher(id);
+        if(rsc != null)
+        {
+            // Dans le cas ou elle existe, mise a jour complete et retourne la ressource a jour
+            dao.miseAJour(ressource);
+            return ressource;
+        }
+
+        // Cas ou la ressource a mettre a jour n'existait pas, renvoie juste null
+        return null;
     }
 
 }

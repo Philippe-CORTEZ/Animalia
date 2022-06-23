@@ -45,8 +45,9 @@ public interface Ressource<R>
     /**
      * Met à jour l'entièreté d'une ressource spécifiée
      * @param ressource une ressource avec le media type adéquat
+     * @param id l'id de la ressource à mettre à jour
      * @return la ressource à jour avec le media type adéquat
      */
-    R miseAJourRessource(R ressource);
+    R miseAJourRessource(R ressource, long id);
 
 }
