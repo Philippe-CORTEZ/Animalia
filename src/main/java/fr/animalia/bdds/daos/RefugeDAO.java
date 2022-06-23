@@ -36,8 +36,8 @@ public class RefugeDAO extends DAOGenerique<Refuge>
         nomRefuge = nomRefuge.toUpperCase();
 
         // Recupere les animaux qui sont dans le refuge dont les noms est donne et dont leur fin de sejour n'est pas acte
-        return entityManager.createQuery("select animal from Animal animal where animal.numPuce in " +
-                        "(select info.pensionnaire.numPuce from InformationSejour info where info.refuge.nom = :nomRefuge and info.dateFinSejour is null)", Animal.class)
+        return entityManager.createQuery("select animal from Animal animal where animal.id in " +
+                        "(select info.pensionnaire.id from InformationSejour info where info.refuge.nom = :nomRefuge and info.dateFinSejour is null)", Animal.class)
                 .setParameter("nomRefuge", nomRefuge)
                 .getResultList();
     }
