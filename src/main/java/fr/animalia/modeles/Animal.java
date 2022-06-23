@@ -81,6 +81,13 @@ public class Animal implements Entite
     @JsonIdentityReference(alwaysAsId = true)
     private List<InformationAdoption> informationAdoptions = new ArrayList<>();
 
+    /** Les informations de ses refuges (ainsi que lui actuel) */
+    @Builder.Default
+    @OneToMany(mappedBy = "pensionnaire")
+    @JsonProperty("id_info_sejour")
+    @JsonIdentityReference(alwaysAsId = true)
+    private List<InformationSejour> informationSejours = new ArrayList<>();
+
 
 
     /** Redéfinition de equals */
@@ -115,6 +122,10 @@ public class Animal implements Entite
                 ", race='" + race + '\'' +
                 ", description='" + description + '\'' +
                 ", sos=" + sos +
+                ", pathologies=" + pathologies +
+                ", soins=" + soins +
+                ", informationAdoptions=" + informationAdoptions +
+                ", informationSejours=" + informationSejours +
                 '}';
     }
 
