@@ -59,6 +59,11 @@ public class InformationSejour implements Entite
     @Column(name = "MOTIF_FIN_SEJOUR")
     private String motifFinDeSejour;
 
+    /** Indique si ce refuge est le refuge actuel de l'animal */
+    @Setter
+    @Column(name = "REFUGE_ACTUEL")
+    private boolean refugeActuel;
+
 
 
     /** Redéfinition de equals */
