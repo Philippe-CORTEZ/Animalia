@@ -18,7 +18,7 @@ import java.util.List;
 @Path("animaux")
 public class AnimalRessource extends RessourceGenerique<Animal>
 {
-    /** Utilise une Animal en type déclaré pour les actions propres à cette ressource */
+    /** Utilise une AnimalDAO en type déclaré pour les actions propres à cette ressource */
     private final AnimalDAO animalDAO;
 
 
