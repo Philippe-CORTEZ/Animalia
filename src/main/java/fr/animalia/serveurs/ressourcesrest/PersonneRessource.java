@@ -20,6 +20,7 @@ public class PersonneRessource extends RessourceGenerique<Personne>
     /** Utilise une PersonneDAO en type déclaré pour les actions propres à cette ressource */
     private final PersonneDAO personneDAO;
 
+
     /** Utilise la DAO de Personne pour les méthodes de la classe mère */
     public PersonneRessource()
     {
@@ -27,7 +28,7 @@ public class PersonneRessource extends RessourceGenerique<Personne>
         this.personneDAO = new PersonneDAO();
     }
 
-    
+
     /**
      * Récupère une personne par son nom ET prénom
      * @param nom le nom de la personne
