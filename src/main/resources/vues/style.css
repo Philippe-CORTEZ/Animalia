@@ -26,3 +26,18 @@
 {
     -fx-font-family: Anastasia;
 }
+
+.bouton-vert
+{
+    -fx-background-color: #C7D87D;
+}
+
+.bouton-orange
+{
+    -fx-background-color: #DCCB72;
+}
+
+.bouton-bleu
+{
+    -fx-background-color: #6395C4;
+}
