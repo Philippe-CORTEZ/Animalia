@@ -36,11 +36,15 @@ public class InformationSejour implements Entite
     /** L'animal qui passe le séjour */
     @ManyToOne
     @JoinColumn(name = "NUM_PUCE_ANIMAL")
+    @JsonProperty("id_pensionnaire")
+    @JsonIdentityReference(alwaysAsId = true)
     private Animal pensionnaire;
 
     /** Le refuge où l'animal a passé son séjour */
     @ManyToOne
     @JoinColumn(name = "ID_REFUGE")
+    @JsonProperty("id_refuge")
+    @JsonIdentityReference(alwaysAsId = true)
     private Refuge refuge;
 
     /** Date d'arrivée au refuge */
@@ -88,6 +92,20 @@ public class InformationSejour implements Entite
         result = 31 * result + (refuge != null ? refuge.hashCode() : 0);
         result = 31 * result + (dateDebutSejour != null ? dateDebutSejour.hashCode() : 0);
         return result;
+    }
+
+    /** Redéfinition de toString */
+    @Override
+    public String toString()
+    {
+        return "InformationSejour{" +
+                "id=" + id +
+                ", refuge=" + refuge +
+                ", dateDebutSejour=" + dateDebutSejour +
+                ", dateFinSejour=" + dateFinSejour +
+                ", motifFinDeSejour='" + motifFinDeSejour + '\'' +
+                ", refugeActuel=" + refugeActuel +
+                '}';
     }
 
 }
