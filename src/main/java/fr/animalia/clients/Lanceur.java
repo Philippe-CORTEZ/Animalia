@@ -1,5 +1,6 @@
-package fr.animalia;
+package fr.animalia.clients;
 
+import fr.animalia.clients.App;
 import javafx.application.Application;
 
 public class Lanceur

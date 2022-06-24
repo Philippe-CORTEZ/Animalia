@@ -1,4 +1,4 @@
-package fr.animalia;
+package fr.animalia.clients;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,6 @@
 package fr.animalia.controleurs;
 
-import fr.animalia.App;
+import fr.animalia.clients.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
