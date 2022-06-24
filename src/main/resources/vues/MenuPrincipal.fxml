@@ -72,9 +72,19 @@
                   <ComboBox fx:id="choixSexe" layoutX="14.0" layoutY="176.0" prefHeight="25.0" prefWidth="285.0" promptText="Sexe :" />
                   <DatePicker fx:id="choixDateNaissance" layoutX="13.0" layoutY="208.0" prefHeight="25.0" prefWidth="286.0" promptText="Date de naissance :" />
                   <CheckBox fx:id="choixSOS" layoutX="15.0" layoutY="243.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="285.0" text="Dispositif SOS" />
-                  <ComboBox layoutX="14.0" layoutY="270.0" prefHeight="25.0" prefWidth="285.0" promptText="Refuge :" />
+                  <ComboBox fx:id="choixRefuge" layoutX="14.0" layoutY="270.0" prefHeight="25.0" prefWidth="285.0" promptText="Refuge :" />
                   <TextArea fx:id="txtDescription" layoutX="13.0" layoutY="301.0" prefHeight="37.0" prefWidth="288.0" promptText="Descriptif :" />
                   <Button layoutX="102.0" layoutY="353.0" mnemonicParsing="false" onAction="#validerSaisie" prefHeight="26.0" prefWidth="109.0" styleClass="bouton-bleu" text="Valider" />
+                  <AnchorPane layoutX="6.0" layoutY="49.0">
+                     <children>
+                        <Label text="*" textFill="RED" />
+                        <Label layoutY="33.0" text="*" textFill="RED" />
+                        <Label layoutY="66.0" text="*" textFill="RED" />
+                        <Label layoutY="133.0" text="*" textFill="RED" />
+                        <Label layoutY="163.0" text="*" textFill="RED" />
+                        <Label layoutY="225.0" text="*" textFill="RED" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
