@@ -1,12 +1,20 @@
 package fr.animalia.controleurs;
 
-import fr.animalia.bdds.daos.AnimalDAO;
+import fr.animalia.clients.ClientREST;
 import fr.animalia.modeles.Animal;
 import fr.animalia.modeles.EnumSexe;
+import fr.animalia.modeles.InformationSejour;
+import fr.animalia.modeles.Refuge;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class MenuPrincipalControleur
 {
@@ -33,6 +41,9 @@ public class MenuPrincipalControleur
     private CheckBox choixSOS = new CheckBox();
 
     @FXML
+    private ComboBox<Refuge> choixRefuge = new ComboBox<>();
+
+    @FXML
     private TextArea txtDescription = new TextArea();
 
     @FXML
@@ -43,7 +54,12 @@ public class MenuPrincipalControleur
     @FXML
     public void initialize()
     {
+        // Valeur pour le sexe de l'animal
         choixSexe.setItems(FXCollections.observableArrayList(EnumSexe.MALE, EnumSexe.FEMELLE));
+
+        // Liste des refuges
+        List<Refuge> refuges = ClientREST.getWebRessource().path("refuges/all").request().get(new GenericType<>(){});
+        choixRefuge.setItems(FXCollections.observableArrayList(refuges));
     }
 
 
@@ -57,7 +73,7 @@ public class MenuPrincipalControleur
         // Verifie si la saisie est correct auquel cas affiche un message d'erreur
         if(verifierSaisie())
         {
-            // Sinon creer l'animal avec les donnees saisie et le persiste en base de donnees
+            // Sinon creer l'animal avec les donnees saisie
             Animal animal = Animal.builder()
                     .id(Long.parseLong(txtNumPuce.getText()))
                     .nom(txtNom.getText())
@@ -69,7 +85,24 @@ public class MenuPrincipalControleur
                     .description(txtDescription.getText())
                     .build();
 
-            new AnimalDAO().persister(animal);
+            // Ajout ses premieres informations de sejour
+            InformationSejour informationSejourBase = InformationSejour.builder()
+                    .dateDebutSejour(LocalDate.now())
+                    .pensionnaire(animal)
+                    .refuge(choixRefuge.getValue())
+                    .refugeActuel(true)
+                    .build();
+
+            animal.getInformationSejours().add(informationSejourBase);
+
+            System.out.println(animal + "\n");
+            System.out.println(choixRefuge.getValue() .getId()+ "\n");
+            System.out.println(informationSejourBase + "\n\n");
+
+            // TODO : ID Refuge pas spécifié ??
+
+            // Persiste l'animal et ses informations de sejour (dans son premier refuge)
+            ClientREST.getWebRessource().path("animaux").request().post(Entity.entity(animal, MediaType.APPLICATION_JSON), Animal.class);
 
             // Affiche un message de reussite
             labelMessage.setTextFill(Color.GREEN);
@@ -91,6 +124,7 @@ public class MenuPrincipalControleur
         if(txtEspece.getText().isEmpty()) return false;
         if(choixSexe.getValue() == null) return false;
         if(choixDateNaissance.getValue() == null) return false;
+        if(choixRefuge.getValue() == null) return false;
 
         return true;
     }
