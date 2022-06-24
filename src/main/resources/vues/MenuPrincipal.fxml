@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.animalia.controleurs.EnregistrementPensionnaireControleur">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.animalia.controleurs.MenuPrincipalControleur">
    <children>
       <Pane layoutX="170.0" layoutY="14.0" prefHeight="46.0" prefWidth="263.0" style="-fx-background-color: #250C4B; -fx-background-radius: 15;">
          <children>

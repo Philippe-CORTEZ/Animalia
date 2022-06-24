@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
-public class EnregistrementPensionnaireControleur
+public class MenuPrincipalControleur
 {
     /** Association FXML avec attributs */
     @FXML

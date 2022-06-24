@@ -11,7 +11,7 @@ public class AuthentificationControleur implements Controleur
     {
         // Pour l'instant se contente de charger la fenetre suivante
         // Utilisateur par defaut : un gestionnaire
-        changerFXML("vues/EnregistrementPensionnaire.fxml");
+        changerFXML("vues/MenuPrincipal.fxml");
     }
 
 }
