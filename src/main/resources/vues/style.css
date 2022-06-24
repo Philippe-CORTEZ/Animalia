@@ -1,0 +1,28 @@
+@font-face
+{
+    font-family: Alysthia;
+    src: url(./polices/Alysthia.ttf);
+}
+
+@font-face
+{
+    font-family: Anastasia;
+    src: url(./polices/Anastasia.otf);
+}
+
+/* --- */
+
+.degrade-diagonal
+{
+    -fx-background-color: linear-gradient(to top right, #FCE1A4, #A6CB99, #6FACC4, #1E329F);
+}
+
+.titre-accueil
+{
+    -fx-font-family: Alysthia;
+}
+
+.titre-formulaire
+{
+    -fx-font-family: Anastasia;
+}
