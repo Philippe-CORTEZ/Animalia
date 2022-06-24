@@ -62,28 +62,21 @@ public class Refuge implements Entite
 
         Refuge refuge = (Refuge) o;
 
-        if (!Objects.equals(nom, refuge.nom)) return false;
-        return Objects.equals(adresse, refuge.adresse);
+        return Objects.equals(nom, refuge.nom);
     }
 
     /** Redéfinition de hashCode */
     @Override
     public int hashCode()
     {
-        int result = nom != null ? nom.hashCode() : 0;
-        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
-        return result;
+        return nom != null ? nom.hashCode() : 0;
     }
 
     /** Redéfinition de toString */
     @Override
     public String toString()
     {
-        return "Refuge{" +
-                "nom='" + nom + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return nom;
     }
 
 }
