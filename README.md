@@ -65,6 +65,7 @@ A venir
 
 
 
-## Contributeur
+## Contributeurs
 
 * Philippe CORTEZ
+* Jessie RAGOT (Maquettage)
