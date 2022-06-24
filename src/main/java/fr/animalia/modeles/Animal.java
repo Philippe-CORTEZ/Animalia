@@ -83,7 +83,7 @@ public class Animal implements Entite
 
     /** Les informations de ses refuges (ainsi que lui actuel) */
     @Builder.Default
-    @OneToMany(mappedBy = "pensionnaire")
+    @OneToMany(mappedBy = "pensionnaire", cascade = CascadeType.PERSIST)
     @JsonProperty("id_info_sejour")
     @JsonIdentityReference(alwaysAsId = true)
     private List<InformationSejour> informationSejours = new ArrayList<>();
