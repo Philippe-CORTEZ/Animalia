@@ -30,14 +30,31 @@
 .bouton-vert
 {
     -fx-background-color: #C7D87D;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
 }
 
 .bouton-orange
 {
     -fx-background-color: #DCCB72;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
 }
 
 .bouton-bleu
 {
     -fx-background-color: #6395C4;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+}
+
+.bordure
+{
+    -fx-background-radius: 15px;
+    -fx-background-color: rgba(0, 0, 0, 0.15);
+}
+
+.gris-transparent
+{
+    -fx-background-color: rgba(255, 255, 255, 0.6);
 }
