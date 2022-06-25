@@ -77,9 +77,6 @@ public abstract class RessourceGenerique<E extends Entite> implements Ressource<
     @Produces(MediaType.APPLICATION_JSON)
     public E insererRessource(E ressource)
     {
-        // Besoin de merge avant de persist car si la ressource a des attributs qui sont des entites deja existantes en bdd
-        // Il faut que l'entity manager en prenne connaissance (pour eviter une erreur de type violation cle primaire)
-        ressource = dao.merge(ressource);
         return dao.persister(ressource);
     }
 
