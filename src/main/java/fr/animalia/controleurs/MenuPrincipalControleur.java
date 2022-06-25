@@ -87,19 +87,13 @@ public class MenuPrincipalControleur
 
             // Ajout ses premieres informations de sejour
             InformationSejour informationSejourBase = InformationSejour.builder()
-                    .dateDebutSejour(LocalDate.now())
+                    .dateDebutSejour(LocalDate.now().plusDays(1))
                     .pensionnaire(animal)
                     .refuge(choixRefuge.getValue())
                     .refugeActuel(true)
                     .build();
 
             animal.getInformationSejours().add(informationSejourBase);
-
-            System.out.println(animal + "\n");
-            System.out.println(choixRefuge.getValue() .getId()+ "\n");
-            System.out.println(informationSejourBase + "\n\n");
-
-            // TODO : ID Refuge pas spécifié ??
 
             // Persiste l'animal et ses informations de sejour (dans son premier refuge)
             ClientREST.getWebRessource().path("animaux").request().post(Entity.entity(animal, MediaType.APPLICATION_JSON), Animal.class);

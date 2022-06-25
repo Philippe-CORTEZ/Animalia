@@ -47,6 +47,8 @@ public class Refuge implements Entite
     /** Les animaux séjournant dans le refuge ainsi que leurs informations */
     @Builder.Default
     @OneToMany(mappedBy = "refuge", cascade = CascadeType.PERSIST)
+    @JsonProperty("id_info_sejour")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<InformationSejour> informationSejours = new ArrayList<>();
 
 

@@ -43,8 +43,6 @@ public class InformationSejour implements Entite
     /** Le refuge où l'animal a passé son séjour */
     @ManyToOne
     @JoinColumn(name = "ID_REFUGE")
-    @JsonProperty("id_refuge")
-    @JsonIdentityReference(alwaysAsId = true)
     private Refuge refuge;
 
     /** Date d'arrivée au refuge */
