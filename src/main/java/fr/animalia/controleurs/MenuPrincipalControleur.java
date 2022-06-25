@@ -50,6 +50,7 @@ public class MenuPrincipalControleur
     private Label labelMessage = new Label();
 
 
+
     /** Initialise les valeurs de certains widgets */
     @FXML
     public void initialize()
@@ -87,7 +88,7 @@ public class MenuPrincipalControleur
 
             // Ajout ses premieres informations de sejour
             InformationSejour informationSejourBase = InformationSejour.builder()
-                    .dateDebutSejour(LocalDate.now().plusDays(1))
+                    .dateDebutSejour(LocalDate.now())
                     .pensionnaire(animal)
                     .refuge(choixRefuge.getValue())
                     .refugeActuel(true)
@@ -102,23 +103,29 @@ public class MenuPrincipalControleur
             labelMessage.setTextFill(Color.GREEN);
             labelMessage.setText("Enregistrement réussit");
         }
-
-        else
-        {
-            labelMessage.setText("Champs requis manquant");
-        }
     }
 
-    /** Vérifie si la saisie est correcte */
-    public boolean verifierSaisie()
+    /**
+     * Vérifie si la saisie est correcte
+     * @return vrai si la saisie est correcte, faux sinon
+     */
+    private boolean verifierSaisie()
     {
         // Verifie si tous les champs requis sont bien remplis sinon renvoie faux
-        if(txtNumPuce.getText().isEmpty()) return false;
-        if(txtNom.getText().isEmpty()) return false;
-        if(txtEspece.getText().isEmpty()) return false;
-        if(choixSexe.getValue() == null) return false;
-        if(choixDateNaissance.getValue() == null) return false;
-        if(choixRefuge.getValue() == null) return false;
+        if(txtNumPuce.getText().isEmpty() || txtNom.getText().isEmpty() || txtEspece.getText().isEmpty() ||
+                choixSexe.getValue() == null || choixDateNaissance.getValue() == null || choixRefuge.getValue() == null)
+        {
+            labelMessage.setText("Champs requis manquant");
+            return false;
+        }
+
+        // Verifie si le numero de puce est correcte (s'il ne provoquera pas une erreur de violation de cle primaire)
+        long numPuce = Long.parseLong(txtNumPuce.getText());
+        if(ClientREST.getWebRessource().path("animaux/" + numPuce).request().get(Animal.class) != null)
+        {
+            labelMessage.setText("Numéro de puce déjà existant");
+            return false;
+        }
 
         return true;
     }
