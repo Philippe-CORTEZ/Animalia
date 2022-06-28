@@ -44,6 +44,11 @@ public class Soin implements Entite
     @Setter
     private float prix;
 
+    /** Le pourcentage qui sera à charge de l'adoptant lors de l'adoption */
+    @Setter
+    @Column(name = "POURCENTAGE_CHARGE")
+    private int pourcentageCharge;
+
 
     /** Redéfinition de equals */
     @Override
