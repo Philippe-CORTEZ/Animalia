@@ -1,10 +1,20 @@
 package fr.animalia.controleurs;
 
 
+import fr.animalia.clients.ClientREST;
+import fr.animalia.modeles.Animal;
+import fr.animalia.modeles.InformationAdoption;
+import fr.animalia.modeles.Personne;
 import fr.animalia.modeles.Soin;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.MediaType;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +54,27 @@ public class AdoptionControleur
 
     @FXML
     private Label infoTotal = new Label();
+
+    @FXML
+    private TextField txtDon = new TextField();
+
+    @FXML
+    private TextField txtNumMaitre = new TextField();
+
+    @FXML
+    private TextField txtNom = new TextField();
+
+    @FXML
+    private TextField txtPrenom = new TextField();
+
+    @FXML
+    private DatePicker choixDateNaissance = new DatePicker();
+
+    @FXML
+    private TextField txtAdresse = new TextField();
+
+    @FXML
+    private Label labelMessage = new Label();
 
 
 
@@ -96,10 +127,55 @@ public class AdoptionControleur
     }
 
 
+    /**
+     * Vérifie si la saisie est correcte
+     * @return vrai si la saisie est correcte, faux sinon
+     */
+    private boolean verfierSaisie()
+    {
+        if(txtNumMaitre.getText().isEmpty() || txtNom.getText().isEmpty() || txtPrenom.getText().isEmpty()
+                || choixDateNaissance.getValue() == null || txtAdresse.getText().isEmpty())
+        {
+            labelMessage.setText("Champs requis manquant");
+            return false;
+        }
+
+        // Si le champs don est vide alors le met a 0
+        if(txtDon.getText().isEmpty()) txtDon.setText("0");
+
+        return true;
+    }
+
 
     public void validerSaisie()
     {
-        // a faire
+        // Reinitialise le message d'erreur
+        labelMessage.setText("");
+        labelMessage.setTextFill(Color.RED);
+
+        // La saisie est correcte (tous les champs sont remplis)
+        if(verfierSaisie())
+        {
+            // Si l'adoptant est deja enregistre
+            Personne maitre = ClientREST.getWebRessource().path("personnes/" + txtNumMaitre.getText()).request().get(Personne.class);
+
+            // Creer les informations de l'adoption
+            InformationAdoption informationAdoption = InformationAdoption.builder()
+                    .dateAdoption(LocalDate.now())
+                    .animal(DonneeIHM.getAnimalSelectionne())
+                    .don(Float.parseFloat(txtDon.getText()))
+                    .cotisation(Float.parseFloat(infoTotal.getText().substring(0, infoTotal.getText().length() - 1)))
+                    .maitre(maitre)
+                    .build();
+
+            // Mise a jour des informations de l'animal (sur l'adoption)
+            DonneeIHM.getAnimalSelectionne().getInformationAdoptions().add(informationAdoption);
+            ClientREST.getWebRessource().path("animaux/" + DonneeIHM.getAnimalSelectionne().getId())
+                    .request().put(Entity.entity(DonneeIHM.getAnimalSelectionne(), MediaType.APPLICATION_JSON), Animal.class);
+
+            labelMessage.setTextFill(Color.GREEN);
+            labelMessage.setText("Adoption réussite");
+        }
     }
 
 }

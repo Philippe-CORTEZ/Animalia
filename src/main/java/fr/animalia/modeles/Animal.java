@@ -81,8 +81,6 @@ public class Animal implements Entite
     /** Les informations d'adoptions de l'animal (maître, date, ...) */
     @Builder.Default
     @OneToMany(mappedBy = "animal")
-    @JsonProperty("id_info_adoption")
-    @JsonIdentityReference(alwaysAsId = true)
     private List<InformationAdoption> informationAdoptions = new ArrayList<>();
 
     /** Les informations de ses refuges (ainsi que lui actuel) */

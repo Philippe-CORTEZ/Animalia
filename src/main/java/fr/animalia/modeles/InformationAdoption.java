@@ -40,6 +40,8 @@ public class InformationAdoption implements Entite
     /** L'animal adopté */
     @ManyToOne
     @JoinColumn(name = "NUM_PUCE_ANIMAL")
+    @JsonProperty("num_puce_animal")
+    @JsonIdentityReference(alwaysAsId = true)
     private Animal animal;
 
     /** La date de l'adoption */
@@ -88,6 +90,23 @@ public class InformationAdoption implements Entite
         int result = maitre != null ? maitre.hashCode() : 0;
         result = 31 * result + (animal != null ? animal.hashCode() : 0);
         return result;
+    }
+
+
+    /** Redéfinition de toString */
+    @Override
+    public String toString()
+    {
+        return "InformationAdoption{" +
+                "id=" + id +
+                ", maitre_id=" + maitre.getId() +
+                ", animal_id=" + animal.getId() +
+                ", dateAdoption=" + dateAdoption +
+                ", dateRetour=" + dateRetour +
+                ", retourAdoption=" + retourAdoption +
+                ", cotisation=" + cotisation +
+                ", don=" + don +
+                '}';
     }
 
 }
