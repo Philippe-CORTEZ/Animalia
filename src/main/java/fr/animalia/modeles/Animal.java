@@ -73,7 +73,7 @@ public class Animal implements Entite
     /** Les soins qu'a reçus l'animal */
     @Builder.Default
     @ManyToMany
-    @JoinTable(name = "SOINS_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "ID_SOINS")})
+    @JoinTable(name = "SOINS_ANIMAUX", joinColumns = {@JoinColumn(name = "NUM_PUCE_ANIMAL")}, inverseJoinColumns = {@JoinColumn(name = "ID_SOIN")})
     @JsonProperty("id_soin")
     @JsonIdentityReference(alwaysAsId = true)
     private List<Soin> soins = new ArrayList<>();
