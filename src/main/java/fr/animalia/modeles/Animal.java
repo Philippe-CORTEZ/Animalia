@@ -58,6 +58,10 @@ public class Animal implements Entite
     @Setter
     private boolean sos;
 
+    /** Le coût de base pour adopter l'animal (hors frais médical) */
+    @Setter
+    private float prix;
+
     /** Les pathologies dont est atteint l'animal */
     @Builder.Default
     @ManyToMany
@@ -124,6 +128,7 @@ public class Animal implements Entite
                 ", soins=" + soins +
                 ", informationAdoptions=" + informationAdoptions +
                 ", informationSejours=" + informationSejours +
+                ", prix=" + prix +
                 '}';
     }
 
