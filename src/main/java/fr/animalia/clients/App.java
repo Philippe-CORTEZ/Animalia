@@ -31,7 +31,7 @@ public class App extends Application
 
         // Charge le fichier fxml et l'affiche
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getClassLoader().getResource("vues/Authentification.fxml")));
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Animalia");
         stage.show();
