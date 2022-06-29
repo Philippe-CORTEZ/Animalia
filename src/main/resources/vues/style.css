@@ -17,6 +17,13 @@
     -fx-background-color: linear-gradient(to top right, #FCE1A4, #A6CB99, #6FACC4, #1E329F);
 }
 
+.degrade-diagonal-formulaire
+{
+    -fx-background-color: linear-gradient(to top right, #A6CB99, #6FACC4, #1E329F);
+    -fx-background-radius: 15px;
+}
+
+
 .titre-accueil
 {
     -fx-font-family: Alysthia;

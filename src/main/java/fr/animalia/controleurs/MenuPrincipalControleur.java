@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.time.LocalDate;
@@ -51,6 +52,12 @@ public class MenuPrincipalControleur
 
     @FXML
     private Label labelMessage = new Label();
+
+    @FXML
+    private AnchorPane paneEnregistrement = new AnchorPane();
+
+    @FXML
+    private AnchorPane paneConsultation = new AnchorPane();
 
 
 
@@ -133,6 +140,21 @@ public class MenuPrincipalControleur
         }
 
         return true;
+    }
+
+
+    /** Affiche les pensionnaires */
+    public void afficherConsultation()
+    {
+        paneConsultation.toFront();
+        paneEnregistrement.toBack();
+    }
+
+    /** Affiche le formulaire d'enregistrement d'un pensionnaire */
+    public void afficherEnregistrement()
+    {
+        paneEnregistrement.toFront();
+        paneConsultation.toBack();
     }
 
 }
