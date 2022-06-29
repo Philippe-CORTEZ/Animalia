@@ -133,17 +133,24 @@ public class AdoptionControleur
      */
     private boolean verfierSaisie()
     {
-        if(txtNumMaitre.getText().isEmpty() || txtNom.getText().isEmpty() || txtPrenom.getText().isEmpty()
-                || choixDateNaissance.getValue() == null || txtAdresse.getText().isEmpty())
-        {
-            labelMessage.setText("Champs requis manquant");
-            return false;
-        }
-
         // Si le champs don est vide alors le met a 0
         if(txtDon.getText().isEmpty()) txtDon.setText("0");
 
-        return true;
+        // Deux types de saisie possible
+
+        // 1: seul le numero de maitre est renseigne
+        if(!txtNumMaitre.getText().isEmpty()) return true;
+
+        // 2: le numero de maitre n'est pas renseigne (creation de la personne avec son nom, prenom, date et adresse)
+        if(!txtNom.getText().isEmpty() || !txtPrenom.getText().isEmpty()
+                || choixDateNaissance.getValue() != null || !txtAdresse.getText().isEmpty())
+        {
+            return true;
+        }
+
+        // Cas ou aucun des deux possibilites n'est correctement remplis
+        labelMessage.setText("Champs requis manquant");
+        return false;
     }
 
 
@@ -153,11 +160,30 @@ public class AdoptionControleur
         labelMessage.setText("");
         labelMessage.setTextFill(Color.RED);
 
-        // La saisie est correcte (tous les champs sont remplis)
+        // La saisie est correcte (tous les champs requis sont remplis)
         if(verfierSaisie())
         {
-            // Si l'adoptant est deja enregistre
-            Personne maitre = ClientREST.getWebRessource().path("personnes/" + txtNumMaitre.getText()).request().get(Personne.class);
+            Personne maitre;
+
+            // Si l'adoptant n'a pas ete renseigner par le numero de maitre, elle est pas encore persiste
+            // Il faut donc la creer puis la persister
+            // Puis dans tous les cas recupere ensuite la personne pour avoir toute les informations
+            if(txtNumMaitre.getText().isEmpty())
+            {
+                Personne personne = Personne.builder()
+                        .nom(txtNom.getText())
+                        .prenom(txtPrenom.getText())
+                        .dateNaissance(choixDateNaissance.getValue())
+                        .adresse(txtAdresse.getText())
+                        .build();
+
+                maitre = ClientREST.getWebRessource().path("personnes").request().post(Entity.entity(personne, MediaType.APPLICATION_JSON), Personne.class);
+            }
+
+            else
+            {
+                maitre = ClientREST.getWebRessource().path("personnes/" + txtNumMaitre.getText()).request().get(Personne.class);
+            }
 
             // Creer les informations de l'adoption
             InformationAdoption informationAdoption = InformationAdoption.builder()
