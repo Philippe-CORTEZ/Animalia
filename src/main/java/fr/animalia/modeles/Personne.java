@@ -1,16 +1,14 @@
 package fr.animalia.modeles;
 
 import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 
 /**
- * Une personne est reconnue par ses informations personnelles (nom, prénom, date naissance)
- * Une personne est enregistré lorsqu'elle adopte un animal du refuge, elle devient ainsi son maître
+ * Une personne est reconnue par ses informations personnelles (nom, prénom, date naissance, adresse)
+ * Une personne peut adopter un animal du refuge, elle devient ainsi son maître
  * @author Philippe CORTEZ
  */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,6 +18,7 @@ import java.time.LocalDate;
 @Getter
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(name = "PKK_PERSONNE", columnNames = {"nom", "prenom", "date_naissance", "adresse"}) })
 
 @JsonTypeName("personne")
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
