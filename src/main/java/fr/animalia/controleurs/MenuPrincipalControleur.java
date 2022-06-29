@@ -47,6 +47,9 @@ public class MenuPrincipalControleur
     private TextArea txtDescription = new TextArea();
 
     @FXML
+    private TextField txtPrix = new TextField();
+
+    @FXML
     private Label labelMessage = new Label();
 
 
@@ -84,6 +87,7 @@ public class MenuPrincipalControleur
                     .dateNaissance(choixDateNaissance.getValue())
                     .sos(choixSOS.isSelected())
                     .description(txtDescription.getText())
+                    .prix(Float.parseFloat(txtPrix.getText()))
                     .build();
 
             // Ajout ses premieres informations de sejour
@@ -113,7 +117,8 @@ public class MenuPrincipalControleur
     {
         // Verifie si tous les champs requis sont bien remplis sinon renvoie faux
         if(txtNumPuce.getText().isEmpty() || txtNom.getText().isEmpty() || txtEspece.getText().isEmpty() ||
-                choixSexe.getValue() == null || choixDateNaissance.getValue() == null || choixRefuge.getValue() == null)
+                choixSexe.getValue() == null || choixDateNaissance.getValue() == null
+                || choixRefuge.getValue() == null || txtPrix.getText().isEmpty())
         {
             labelMessage.setText("Champs requis manquant");
             return false;
