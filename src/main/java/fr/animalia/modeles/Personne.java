@@ -28,6 +28,7 @@ public class Personne implements Entite
     /** L'identifiant d'une personne en tant que maître*/
     @Id
     @Column(name = "NUM_MAITRE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /** Le nom de la personne */
