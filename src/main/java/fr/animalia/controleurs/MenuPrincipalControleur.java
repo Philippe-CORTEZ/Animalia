@@ -89,6 +89,7 @@ public class MenuPrincipalControleur implements Controleur
                 listViewPensionnaires.getSelectionModel().clearSelection(indexe);
 
                 // Affiche les informations pour le pensionnaire selectionne
+                creerPopup("/vues/InformationPensionnaire.fxml", "Menu personnel");
             }
         });
     }
