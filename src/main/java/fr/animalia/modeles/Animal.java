@@ -113,21 +113,7 @@ public class Animal implements Entite
     @Override
     public String toString()
     {
-        return "Animal{" +
-                "numPuce=" + id +
-                ", nom='" + nom + '\'' +
-                ", dateNaissance=" + dateNaissance +
-                ", sexe=" + sexe +
-                ", espece='" + espece + '\'' +
-                ", race='" + race + '\'' +
-                ", description='" + description + '\'' +
-                ", sos=" + sos +
-                ", pathologies=" + pathologies +
-                ", soins=" + soins +
-                ", informationAdoptions=" + informationAdoptions +
-                ", informationSejours=" + informationSejours +
-                ", prix=" + prix +
-                '}';
+        return id + " - " + nom;
     }
 
 }

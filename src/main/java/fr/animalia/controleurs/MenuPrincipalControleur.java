@@ -9,6 +9,7 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -59,6 +60,9 @@ public class MenuPrincipalControleur
     @FXML
     private AnchorPane paneConsultation = new AnchorPane();
 
+    @FXML
+    private ListView<Animal> listViewPensionnaires = new ListView<>();
+
 
 
     /** Initialise les valeurs de certains widgets */
@@ -71,6 +75,10 @@ public class MenuPrincipalControleur
         // Liste des refuges
         List<Refuge> refuges = ClientREST.getWebRessource().path("refuges/all").request().get(new GenericType<>(){});
         choixRefuge.setItems(FXCollections.observableArrayList(refuges));
+
+        // Liste des pensionnaires
+        List<Animal> animaux = ClientREST.getWebRessource().path("animaux/all").request().get(new GenericType<>(){});
+        listViewPensionnaires.setItems(FXCollections.observableArrayList(animaux));
     }
 
 
