@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 import java.time.LocalDate;
 import java.util.List;
 
-public class MenuPrincipalControleur
+public class MenuPrincipalControleur implements Controleur
 {
     /** Association FXML avec attributs */
     @FXML
@@ -78,6 +78,19 @@ public class MenuPrincipalControleur
         // Liste des pensionnaires
         List<Animal> animaux = ClientREST.getWebRessource().path("animaux/all").request().get(new GenericType<>(){});
         listViewPensionnaires.setItems(FXCollections.observableArrayList(animaux));
+
+        // Ajout une action a chaque element de la listView (les pensionnaires)
+        listViewPensionnaires.setOnMouseClicked(event -> {
+            if(listViewPensionnaires.getSelectionModel().selectedItemProperty().getValue() != null)
+            {
+                // Recupere pour l'instant l'animal selectionne et reinitilaise la selection de la liste (pour selectionner un autre pensionnaire)
+                DonneeIHM.setAnimalSelectionne(listViewPensionnaires.getSelectionModel().selectedItemProperty().getValue());
+                int indexe = listViewPensionnaires.getSelectionModel().getSelectedIndex();
+                listViewPensionnaires.getSelectionModel().clearSelection(indexe);
+
+                // Affiche les informations pour le pensionnaire selectionne
+            }
+        });
     }
 
 
