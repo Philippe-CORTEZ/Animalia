@@ -83,13 +83,7 @@ public class AdoptionControleur
     public void initialize()
     {
         // Initialise les informations de la fiche personnelle de l'animal
-        infoNumPuce.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getId()));
-        infoNom.setText(DonneeIHM.getAnimalSelectionne().getNom());
-        infoEspece.setText(DonneeIHM.getAnimalSelectionne().getEspece());
-        infoRace.setText(DonneeIHM.getAnimalSelectionne().getRace());
-        infoSexe.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getSexe()));
-        infoDateNaissance.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getDateNaissance()));
-        infoRefuge.setText(DonneeIHM.getAnimalSelectionne().getInformationSejours().get(DonneeIHM.getAnimalSelectionne().getInformationSejours().size() - 1).getRefuge().getNom());
+        FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge);
 
         // Initialise les informations des frais
         infoCoutAnimal.setText(DonneeIHM.getAnimalSelectionne().getPrix() + "€");

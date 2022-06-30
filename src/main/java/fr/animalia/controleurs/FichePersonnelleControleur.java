@@ -1,0 +1,56 @@
+package fr.animalia.controleurs;
+
+
+import javafx.scene.control.Label;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+/**
+ * Factorise le code qui affiche la fiche personnelle d'un pensionnaire entre l'adoption et les informations en intégralité
+ * @author Philippe CORTEZ
+ */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class FichePersonnelleControleur
+{
+    /**
+     * Initialise les données de la fiche personnelle d'un pensionnaire
+     * @param infoNumPuce information sur le numéro de puce
+     * @param infoNom information sur le nom
+     * @param infoEspece information sur l'espèce
+     * @param infoRace information sur la race
+     * @param infoSexe information sur le sexe
+     * @param infoDateNaissance information sur la date de naissance
+     * @param infoRefuge information sur le refuge actuel
+     * @param infoDescriptif information sur la description du pensionnaire
+     */
+    public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
+                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoDescriptif)
+    {
+        // Initialise les informations de la fiche personnelle de l'animal
+        infoNumPuce.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getId()));
+        infoNom.setText(DonneeIHM.getAnimalSelectionne().getNom());
+        infoEspece.setText(DonneeIHM.getAnimalSelectionne().getEspece());
+        infoRace.setText(DonneeIHM.getAnimalSelectionne().getRace());
+        infoSexe.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getSexe()));
+        infoDateNaissance.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getDateNaissance()));
+        infoRefuge.setText(DonneeIHM.getAnimalSelectionne().getInformationSejours().get(DonneeIHM.getAnimalSelectionne().getInformationSejours().size() - 1).getRefuge().getNom());
+        infoDescriptif.setText(DonneeIHM.getAnimalSelectionne().getDescription());
+    }
+
+    /**
+     * Initialise les données de la fiche personnelle d'un pensionnaire (hors description)
+     * @param infoNumPuce information sur le numéro de puce
+     * @param infoNom information sur le nom
+     * @param infoEspece information sur l'espèce
+     * @param infoRace information sur la race
+     * @param infoSexe information sur le sexe
+     * @param infoDateNaissance information sur la date de naissance
+     * @param infoRefuge information sur le refuge actuel
+     */
+    public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
+                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge)
+    {
+        initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, new Label(""));
+    }
+
+}
