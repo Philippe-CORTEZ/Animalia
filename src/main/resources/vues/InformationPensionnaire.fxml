@@ -69,15 +69,15 @@
             </ImageView>
             <Label fx:id="infoNumPuce" layoutX="271.0" layoutY="3.0" prefHeight="21.0" prefWidth="375.0" />
             <Label fx:id="infoNom" layoutX="194.0" layoutY="22.0" prefHeight="21.0" prefWidth="447.0" />
-            <Label fx:id="infoEspece" layoutX="211.0" layoutY="41.0" prefHeight="22.0" prefWidth="433.0" />
-            <Label fx:id="infoRace" layoutX="198.0" layoutY="62.0" prefHeight="22.0" prefWidth="447.0" />
-            <Label fx:id="infoSexe" layoutX="195.0" layoutY="79.0" prefHeight="19.0" prefWidth="152.0" />
+            <Label fx:id="infoEspece" layoutX="207.0" layoutY="42.0" prefHeight="22.0" prefWidth="433.0" />
+            <Label fx:id="infoRace" layoutX="194.0" layoutY="63.0" prefHeight="22.0" prefWidth="447.0" />
+            <Label fx:id="infoSexe" layoutX="195.0" layoutY="82.0" prefHeight="19.0" prefWidth="152.0" />
             <Label fx:id="infoDateNaissance" layoutX="279.0" layoutY="100.0" prefHeight="21.0" prefWidth="181.0" />
-            <Label fx:id="infoRefuge" layoutX="207.0" layoutY="121.0" prefHeight="25.0" prefWidth="433.0" />
+            <Label fx:id="infoRefuge" layoutX="207.0" layoutY="123.0" prefHeight="25.0" prefWidth="433.0" />
             <Label fx:id="infoDescriptif" layoutX="229.0" layoutY="150.0" prefHeight="59.0" prefWidth="447.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="508.0" layoutY="13.0" prefHeight="17.0" prefWidth="172.0" styleClass="titre-formulaire" text="Fiche personnelle">
+      <Label layoutX="508.0" layoutY="22.0" prefHeight="17.0" prefWidth="172.0" styleClass="titre-formulaire" text="Fiche personnelle">
          <font>
             <Font size="25.0" />
          </font>
@@ -104,6 +104,6 @@
          </font>
       </Label>
       <Button layoutX="508.0" layoutY="293.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="173.0" styleClass="bouton-bleu" text="Réaffecter à un refuge" />
-      <Button layoutX="508.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="173.0" styleClass="bouton-bleu" text="Adopter" />
+      <Button layoutX="508.0" layoutY="334.0" mnemonicParsing="false" onAction="#afficherAdoption" prefHeight="27.0" prefWidth="173.0" styleClass="bouton-bleu" text="Adopter" />
    </children>
 </AnchorPane>
