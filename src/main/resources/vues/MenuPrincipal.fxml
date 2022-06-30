@@ -93,12 +93,12 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="degrade-diagonal-formulaire" />
             <AnchorPane fx:id="paneConsultation" prefHeight="200.0" prefWidth="200.0" styleClass="bordure">
                <children>
-                  <ListView fx:id="listViewPensionnaires" layoutX="4.0" layoutY="35.0" prefHeight="396.0" prefWidth="309.0" />
-                  <Label layoutX="92.0" prefHeight="18.0" prefWidth="133.0" styleClass="titre-formulaire" text="Nos pensionnaires">
+                  <Label layoutX="92.0" prefHeight="37.0" prefWidth="160.0" styleClass="titre-formulaire" text="Nos pensionnaires">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="25.0" />
                      </font>
                   </Label>
+                  <ListView fx:id="listViewPensionnaires" layoutX="14.0" layoutY="40.0" prefHeight="389.0" prefWidth="286.0" />
                </children>
             </AnchorPane>
          </children>
