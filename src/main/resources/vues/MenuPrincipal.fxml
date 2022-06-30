@@ -58,6 +58,12 @@
       </AnchorPane>
       <StackPane layoutX="271.0" layoutY="6.0" prefHeight="435.0" prefWidth="315.0" styleClass="bordure">
          <children>
+            <AnchorPane fx:id="paneConsultation" prefHeight="200.0" prefWidth="200.0" styleClass="bordure">
+               <children>
+                  <Label layoutX="79.0" layoutY="168.0" text="TEST" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="degrade-diagonal-formulaire" />
             <AnchorPane fx:id="paneEnregistrement" prefHeight="200.0" prefWidth="200.0" styleClass="bordure">
                <children>
                   <Label layoutX="33.0" styleClass="titre-formulaire" text="Formulaire d'enregistrement">
@@ -86,12 +92,7 @@
                   </AnchorPane>
                   <TextField fx:id="txtPrix" layoutX="13.0" layoutY="349.0" prefHeight="25.0" prefWidth="285.0" promptText="Prix:" />
                   <Label layoutX="3.0" layoutY="352.0" text="*" textFill="RED" />
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="degrade-diagonal-formulaire" />
-            <AnchorPane fx:id="paneConsultation" prefHeight="200.0" prefWidth="200.0" styleClass="bordure">
-               <children>
-                  <Label layoutX="79.0" layoutY="168.0" text="TEST" />
+                  <Label layoutX="6.0" layoutY="274.0" text="*" textFill="RED" />
                </children>
             </AnchorPane>
          </children>
