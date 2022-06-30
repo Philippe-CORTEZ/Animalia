@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,6 +46,9 @@ public class AdoptionControleur
 
     @FXML
     private Label infoRefuge = new Label();
+
+    @FXML
+    private Label infoSOS = new Label();
 
     @FXML
     private Label infoCoutAnimal = new Label();
@@ -83,7 +87,7 @@ public class AdoptionControleur
     public void initialize()
     {
         // Initialise les informations de la fiche personnelle de l'animal
-        FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge);
+        FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS);
 
         // Initialise les informations des frais
         infoCoutAnimal.setText(DonneeIHM.getAnimalSelectionne().getPrix() + "€");
@@ -195,6 +199,9 @@ public class AdoptionControleur
 
             labelMessage.setTextFill(Color.GREEN);
             labelMessage.setText("Adoption réussite");
+
+            // Ferme la fenetre une fois l'adoption reussite
+            ((Stage)(labelMessage.getScene().getWindow())).close();
         }
     }
 

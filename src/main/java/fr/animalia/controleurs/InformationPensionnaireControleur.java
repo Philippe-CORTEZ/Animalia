@@ -42,6 +42,9 @@ public class InformationPensionnaireControleur implements Controleur
     @FXML
     private Label infoSoins = new Label();
 
+    @FXML
+    private Label infoSOS = new Label();
+
 
 
     /** Initialise les valeurs de certains widgets */
@@ -50,7 +53,7 @@ public class InformationPensionnaireControleur implements Controleur
     {
         // Initialise les informations de la fiche personnelle de l'animal
         FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe,
-                infoDateNaissance, infoRefuge, infoDescriptif);
+                infoDateNaissance, infoRefuge, infoSOS, infoDescriptif);
 
         // Initialise la section Suivi medical
        infoPathologies.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getPathologies()));

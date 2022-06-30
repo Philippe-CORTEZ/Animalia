@@ -130,9 +130,14 @@
          </children>
       </AnchorPane>
       <Button layoutX="448.0" layoutY="411.0" mnemonicParsing="false" onAction="#validerSaisie" prefHeight="25.0" prefWidth="151.0" styleClass="bouton-bleu" text="Valider" />
-      <Label fx:id="labelMessage" layoutX="22.0" layoutY="105.0" prefHeight="17.0" prefWidth="227.0" styleClass="titre-formulaire" textFill="RED">
+      <Label fx:id="labelMessage" layoutX="27.0" layoutY="80.0" prefHeight="17.0" prefWidth="227.0" styleClass="titre-formulaire" textFill="RED">
          <font>
             <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="infoSOS" layoutX="27.0" layoutY="117.0" prefHeight="54.0" prefWidth="207.0" styleClass="titre-formulaire" textFill="RED">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
    </children>

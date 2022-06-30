@@ -22,9 +22,10 @@ public class FichePersonnelleControleur
      * @param infoDateNaissance information sur la date de naissance
      * @param infoRefuge information sur le refuge actuel
      * @param infoDescriptif information sur la description du pensionnaire
+     * @param infoSOS information si le pensionnaire est dans le dispositif SOS
      */
     public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
-                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoDescriptif)
+                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoSOS, Label infoDescriptif)
     {
         // Initialise les informations de la fiche personnelle de l'animal
         infoNumPuce.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getId()));
@@ -35,6 +36,8 @@ public class FichePersonnelleControleur
         infoDateNaissance.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getDateNaissance()));
         infoRefuge.setText(DonneeIHM.getAnimalSelectionne().getInformationSejours().get(DonneeIHM.getAnimalSelectionne().getInformationSejours().size() - 1).getRefuge().getNom());
         infoDescriptif.setText(DonneeIHM.getAnimalSelectionne().getDescription());
+
+        if(DonneeIHM.getAnimalSelectionne().isSos()) infoSOS.setText("Dispositif SOS");
     }
 
     /**
@@ -48,9 +51,9 @@ public class FichePersonnelleControleur
      * @param infoRefuge information sur le refuge actuel
      */
     public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
-                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge)
+                                                   Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoSOS)
     {
-        initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, new Label(""));
+        initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS, new Label(""));
     }
 
 }

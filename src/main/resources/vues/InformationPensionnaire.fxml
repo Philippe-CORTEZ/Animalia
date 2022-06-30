@@ -27,6 +27,11 @@
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
+            <Label fx:id="infoSOS" layoutX="522.0" layoutY="81.0" prefHeight="38.0" prefWidth="124.0" styleClass="titre-formulaire" textFill="RED">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
             <Label layoutX="158.0" layoutY="23.0" prefHeight="21.0" prefWidth="44.0" text="Nom:">
                <font>
                   <Font name="System Bold" size="11.0" />
@@ -68,7 +73,7 @@
                </image>
             </ImageView>
             <Label fx:id="infoNumPuce" layoutX="271.0" layoutY="3.0" prefHeight="21.0" prefWidth="375.0" />
-            <Label fx:id="infoNom" layoutX="194.0" layoutY="22.0" prefHeight="21.0" prefWidth="447.0" />
+            <Label fx:id="infoNom" layoutX="194.0" layoutY="22.0" prefHeight="23.0" prefWidth="433.0" />
             <Label fx:id="infoEspece" layoutX="207.0" layoutY="42.0" prefHeight="22.0" prefWidth="433.0" />
             <Label fx:id="infoRace" layoutX="194.0" layoutY="63.0" prefHeight="22.0" prefWidth="447.0" />
             <Label fx:id="infoSexe" layoutX="195.0" layoutY="82.0" prefHeight="19.0" prefWidth="152.0" />
