@@ -73,11 +73,7 @@ public class Soin implements Entite
     @Override
     public String toString()
     {
-        return "Soin{" +
-                "nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
-                ", prix=" + prix +
-                '}';
+        return nom;
     }
 
 }

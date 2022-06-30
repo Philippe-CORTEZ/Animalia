@@ -65,10 +65,7 @@ public class Pathologie implements Entite
     @Override
     public String toString()
     {
-        return "Pathologie{" +
-                "nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return nom;
     }
 
 }
