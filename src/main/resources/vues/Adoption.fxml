@@ -87,9 +87,9 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="96.0" fitWidth="98.0" layoutX="10.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="96.0" fitWidth="98.0" layoutX="10.0" layoutY="43.0" pickOnBounds="true">
                <image>
-                  <Image url="@images/django.png" />
+                  <Image url="@images/animal_defaut.png" />
                </image>
             </ImageView>
             <Label fx:id="infoNumPuce" layoutX="231.0" layoutY="27.0" prefHeight="19.0" prefWidth="192.0" />
