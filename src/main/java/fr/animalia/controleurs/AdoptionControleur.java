@@ -96,6 +96,13 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
         initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS);
 
         // Initialise les informations des frais
+        initialiserInformationsFrais();
+    }
+
+
+    /** Initialiser les informations sur les frais d'adoption du pensionnaire */
+    private void initialiserInformationsFrais()
+    {
         infoCoutAnimal.setText(DonneeIHM.getAnimalSelectionne().getPrix() + "€");
 
         List<Float> coutSoins = calculerCoutsSoin();
@@ -130,6 +137,40 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
         return coutSoins;
     }
 
+    /** Valide la saisie effectuée par l'utilisateur (effectue une vérification au préalable) */
+    public void validerSaisie()
+    {
+        // Reinitialise le message d'erreur
+        labelMessage.setText("");
+        labelMessage.setTextFill(Color.RED);
+
+        // La saisie est correcte (tous les champs requis sont remplis)
+        if(verfierSaisie())
+        {
+            // Recupere (creer et persiste si besoin) le maitre
+            Personne maitre = recupererMaitre();
+
+            // Creer les informations de l'adoption
+            InformationAdoption informationAdoption = InformationAdoption.builder()
+                    .dateAdoption(LocalDate.now())
+                    .animal(DonneeIHM.getAnimalSelectionne())
+                    .don(Float.parseFloat(txtDon.getText()))
+                    .cotisation(Float.parseFloat(infoTotal.getText().substring(0, infoTotal.getText().length() - 1)))
+                    .maitre(maitre)
+                    .build();
+
+            // Mise a jour des informations de l'animal (sur l'adoption)
+            DonneeIHM.getAnimalSelectionne().getInformationAdoptions().add(informationAdoption);
+            ClientREST.getWebRessource().path("animaux/" + DonneeIHM.getAnimalSelectionne().getId())
+                    .request().put(Entity.entity(DonneeIHM.getAnimalSelectionne(), MediaType.APPLICATION_JSON), Animal.class);
+
+            labelMessage.setTextFill(Color.GREEN);
+            labelMessage.setText("Adoption réussite");
+
+            // Ferme la fenetre une fois l'adoption reussite
+            ((Stage)(labelMessage.getScene().getWindow())).close();
+        }
+    }
 
     /**
      * Vérifie si la saisie est correcte
@@ -140,7 +181,7 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
         // Si le champs don est vide alors le met a 0
         if(txtDon.getText().isEmpty()) txtDon.setText("0");
 
-        // Sinon verifie que la saisie est bien un nombre
+            // Sinon verifie que la saisie est bien un nombre
         else
         {
             if(!traiterSaisieNombre(txtDon.getText()))
@@ -177,58 +218,30 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
         return false;
     }
 
-
-    public void validerSaisie()
+    /** Récupère (créer et persiste si besoin) le maitre qui vient d'adopter */
+    private Personne recupererMaitre()
     {
-        // Reinitialise le message d'erreur
-        labelMessage.setText("");
-        labelMessage.setTextFill(Color.RED);
-
-        // La saisie est correcte (tous les champs requis sont remplis)
-        if(verfierSaisie())
+        // Si l'adoptant n'a pas ete renseigner par le numero de maitre, elle est pas encore persiste
+        // Il faut donc la creer puis la persister
+        // Puis dans tous les cas recupere ensuite la personne pour avoir toute les informations
+        if(txtNumMaitre.getText().isEmpty())
         {
-            Personne maitre;
-
-            // Si l'adoptant n'a pas ete renseigner par le numero de maitre, elle est pas encore persiste
-            // Il faut donc la creer puis la persister
-            // Puis dans tous les cas recupere ensuite la personne pour avoir toute les informations
-            if(txtNumMaitre.getText().isEmpty())
-            {
-                Personne personne = Personne.builder()
-                        .nom(traiterSaisieTexte(txtNom.getText()))
-                        .prenom(traiterSaisieTexte(txtPrenom.getText()))
-                        .dateNaissance(choixDateNaissance.getValue())
-                        .adresse(traiterSaisieTexte(txtAdresse.getText()))
-                        .build();
-
-                maitre = ClientREST.getWebRessource().path("personnes").request().post(Entity.entity(personne, MediaType.APPLICATION_JSON), Personne.class);
-            }
-
-            else
-            {
-                maitre = ClientREST.getWebRessource().path("personnes/" + txtNumMaitre.getText()).request().get(Personne.class);
-            }
-
-            // Creer les informations de l'adoption
-            InformationAdoption informationAdoption = InformationAdoption.builder()
-                    .dateAdoption(LocalDate.now())
-                    .animal(DonneeIHM.getAnimalSelectionne())
-                    .don(Float.parseFloat(txtDon.getText()))
-                    .cotisation(Float.parseFloat(infoTotal.getText().substring(0, infoTotal.getText().length() - 1)))
-                    .maitre(maitre)
+            Personne personne = Personne.builder()
+                    .nom(traiterSaisieTexte(txtNom.getText()))
+                    .prenom(traiterSaisieTexte(txtPrenom.getText()))
+                    .dateNaissance(choixDateNaissance.getValue())
+                    .adresse(traiterSaisieTexte(txtAdresse.getText()))
                     .build();
 
-            // Mise a jour des informations de l'animal (sur l'adoption)
-            DonneeIHM.getAnimalSelectionne().getInformationAdoptions().add(informationAdoption);
-            ClientREST.getWebRessource().path("animaux/" + DonneeIHM.getAnimalSelectionne().getId())
-                    .request().put(Entity.entity(DonneeIHM.getAnimalSelectionne(), MediaType.APPLICATION_JSON), Animal.class);
-
-            labelMessage.setTextFill(Color.GREEN);
-            labelMessage.setText("Adoption réussite");
-
-            // Ferme la fenetre une fois l'adoption reussite
-            ((Stage)(labelMessage.getScene().getWindow())).close();
+            return ClientREST.getWebRessource().path("personnes").request().post(Entity.entity(personne, MediaType.APPLICATION_JSON), Personne.class);
         }
+
+        // Cas ou le maitre existe deja, il suffit de le recuperer en base de donnees
+        else
+        {
+            return ClientREST.getWebRessource().path("personnes/" + txtNumMaitre.getText()).request().get(Personne.class);
+        }
+
     }
 
 }
