@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
  * Contrôleur qui gère le menu personnel de chaque pensionnaire préalablement sélectionné
  * @author Philippe CORTEZ
  */
-public class InformationPensionnaireControleur implements Controleur
+public class InformationPensionnaireControleur implements Controleur, FichePersonnelle
 {
     /**
      * Association FXML avec attributs
@@ -52,7 +52,7 @@ public class InformationPensionnaireControleur implements Controleur
     public void initialize()
     {
         // Initialise les informations de la fiche personnelle de l'animal
-        FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe,
+        initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe,
                 infoDateNaissance, infoRefuge, infoSOS, infoDescriptif);
 
         // Initialise la section Suivi medical

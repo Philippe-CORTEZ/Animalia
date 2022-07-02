@@ -2,15 +2,13 @@ package fr.animalia.controleurs;
 
 
 import javafx.scene.control.Label;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 /**
- * Factorise le code qui affiche la fiche personnelle d'un pensionnaire entre l'adoption et les informations en intégralité
+ * Factorise le code qui affiche dynamiquement la fiche personnelle d'un pensionnaire
+ * Entre l'adoption et les informations en intégralité
  * @author Philippe CORTEZ
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class FichePersonnelleControleur
+public interface FichePersonnelle
 {
     /**
      * Initialise les données de la fiche personnelle d'un pensionnaire
@@ -24,7 +22,7 @@ public class FichePersonnelleControleur
      * @param infoDescriptif information sur la description du pensionnaire
      * @param infoSOS information si le pensionnaire est dans le dispositif SOS
      */
-    public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
+    default void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
                                                    Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoSOS, Label infoDescriptif)
     {
         // Initialise les informations de la fiche personnelle de l'animal
@@ -50,7 +48,7 @@ public class FichePersonnelleControleur
      * @param infoDateNaissance information sur la date de naissance
      * @param infoRefuge information sur le refuge actuel
      */
-    public static void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
+    default void initialiserFichePersonnelle(Label infoNumPuce, Label infoNom, Label infoEspece, Label infoRace,
                                                    Label infoSexe, Label infoDateNaissance, Label infoRefuge, Label infoSOS)
     {
         initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS, new Label(""));

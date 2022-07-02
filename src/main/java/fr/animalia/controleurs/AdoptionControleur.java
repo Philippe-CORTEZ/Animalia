@@ -23,7 +23,7 @@ import java.util.List;
  * Contrôleur qui gère l'adoption d'un animal
  * @author Philippe CORTEZ
  */
-public class AdoptionControleur implements Controleur
+public class AdoptionControleur implements Controleur, FichePersonnelle
 {
     /** Association FXML avec attributs */
     @FXML
@@ -87,7 +87,7 @@ public class AdoptionControleur implements Controleur
     public void initialize()
     {
         // Initialise les informations de la fiche personnelle de l'animal
-        FichePersonnelleControleur.initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS);
+        initialiserFichePersonnelle(infoNumPuce, infoNom, infoEspece, infoRace, infoSexe, infoDateNaissance, infoRefuge, infoSOS);
 
         // Initialise les informations des frais
         infoCoutAnimal.setText(DonneeIHM.getAnimalSelectionne().getPrix() + "€");
