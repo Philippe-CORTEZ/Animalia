@@ -108,9 +108,9 @@ public class MenuPrincipalControleur implements Controleur
             // Sinon creer l'animal avec les donnees saisie
             Animal animal = Animal.builder()
                     .id(Long.parseLong(txtNumPuce.getText()))
-                    .nom(txtNom.getText())
-                    .espece(txtEspece.getText())
-                    .race(txtRace.getText())
+                    .nom(traiterSaisieTexte(txtNom.getText()))
+                    .espece(traiterSaisieTexte(txtEspece.getText()))
+                    .race(traiterSaisieTexte(txtRace.getText()))
                     .sexe(choixSexe.getValue())
                     .dateNaissance(choixDateNaissance.getValue())
                     .sos(choixSOS.isSelected())
@@ -152,7 +152,22 @@ public class MenuPrincipalControleur implements Controleur
             return false;
         }
 
-        // Verifie si le numero de puce est correcte (s'il ne provoquera pas une erreur de violation de cle primaire)
+
+        // Verifie si le prix est bien un flottant
+        if(!traiterSaisieNombre(txtPrix.getText()))
+        {
+            labelMessage.setText("Saisir un nombre (champs prix)");
+            return false;
+        }
+
+        // Verifie si le numero de puce est correcte
+        // Si c'est bien un nombre et s'il ne provoquera pas une erreur de violation de cle primaire
+        if(!traiterSaisieNombre(txtNumPuce.getText()))
+        {
+            labelMessage.setText("Saisir un numéro (champs numéro puce)");
+            return false;
+        }
+
         long numPuce = Long.parseLong(txtNumPuce.getText());
         if(ClientREST.getWebRessource().path("animaux/" + numPuce).request().get(Animal.class) != null)
         {

@@ -93,4 +93,46 @@ public interface Controleur
         creerPopup(nomFichierFXML, "Animalia");
     }
 
+    /**
+     * Formate la chaine pour qu'elle soit conforme avant persistance
+     * @param texteATraiter la chaîne à traiter
+     * @return la même chaîne mais traité
+     */
+    default String traiterSaisieTexte(String texteATraiter)
+    {
+        String res = texteATraiter;
+
+        // Mise en majuscule
+        res = res.toUpperCase();
+
+        // Remplacement des espaces par des "-"
+        res = res.replace(" ", "-");
+
+        return res;
+    }
+
+    /**
+     * Traite et détecte si une saisie sur un champ qui nécessite un nombre est correcte
+     * @param texteATraiter la chaîne qui contient le dit nombre
+     * @return vrai si la saisie est correcte (c'est un nombre), faux sinon
+     */
+    default boolean traiterSaisieNombre(String texteATraiter)
+    {
+        // Supprime prealablement les espaces
+        texteATraiter = texteATraiter.replace(" ", "");
+
+
+        // Si une erreur du type NumberFormatException est lever c'est que la chaine n'etait pas un nombre
+        try
+        {
+           Double.parseDouble(texteATraiter);
+        }
+        catch (NumberFormatException erreur)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }
