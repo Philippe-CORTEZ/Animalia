@@ -76,3 +76,11 @@
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
 }
+
+.bouton-rafraichir
+{
+    -fx-background-color: #C7D87D;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    -fx-graphic: url("./images/rafraichir.png");
+}

@@ -99,6 +99,7 @@
                      </font>
                   </Label>
                   <ListView fx:id="listViewPensionnaires" layoutX="14.0" layoutY="40.0" prefHeight="389.0" prefWidth="286.0" />
+                  <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#rechargerListePensionnaires" prefHeight="25.0" prefWidth="27.0" styleClass="bouton-rafraichir" />
                </children>
             </AnchorPane>
          </children>

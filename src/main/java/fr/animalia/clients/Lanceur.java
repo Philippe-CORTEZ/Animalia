@@ -16,9 +16,9 @@ public class Lanceur
 }
 
 
-// TODO : traitement des entrees (textfield ect)
 // TODO : traitement des sorties (affichage)
-// TODO : Bouton pour recharger la liste pensionnaires
 // TODO : Sectionner le bloc d'attribut FXML
 // TODO : Refactor code contrôleur
 // TODO : Refactor FXML
+// TODO : Refactor code ClientREST
+// TODO : Transformer classe FicherPerso en interface

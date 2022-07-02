@@ -195,4 +195,11 @@ public class MenuPrincipalControleur implements Controleur
         labelMessage.setText("");
     }
 
+    /** Met à jour la liste des pensionnaires */
+    public void rechargerListePensionnaires()
+    {
+        List<Animal> animaux = ClientREST.getWebRessource().path("animaux/all").request().get(new GenericType<>(){});
+        listViewPensionnaires.setItems(FXCollections.observableArrayList(animaux));
+    }
+
 }
