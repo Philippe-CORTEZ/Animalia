@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MenuPrincipalControleur implements Controleur
 {
-    /** Association FXML avec attributs */
+    /** Informations pour le formulaire d'enregistrement d'un pensionnaire */
     @FXML
     private TextField txtNumPuce = new TextField();
 
@@ -50,18 +50,24 @@ public class MenuPrincipalControleur implements Controleur
     @FXML
     private TextField txtPrix = new TextField();
 
-    @FXML
-    private Label labelMessage = new Label();
 
+    /** Informations sur la liste des pensionnaires */
+    @FXML
+    private ListView<Animal> listViewPensionnaires = new ListView<>();
+
+
+    /** Panes pour switcher en les différentes vues (enregistrement, liste pensionnaires) */
     @FXML
     private AnchorPane paneEnregistrement = new AnchorPane();
 
     @FXML
     private AnchorPane paneConsultation = new AnchorPane();
 
-    @FXML
-    private ListView<Animal> listViewPensionnaires = new ListView<>();
 
+    /** Label pour le retour visuel de l'utilisateur */
+    @FXML
+    private Label labelMessage = new Label();
+    
 
 
     /** Initialise les valeurs de certains widgets */

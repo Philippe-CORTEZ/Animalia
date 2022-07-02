@@ -9,9 +9,7 @@ import javafx.scene.control.Label;
  */
 public class InformationPensionnaireControleur implements Controleur, FichePersonnelle
 {
-    /**
-     * Association FXML avec attributs
-     */
+    /** Informations de bases sur la fiche personnelle du pensionnaire */
     @FXML
     private Label infoNumPuce = new Label();
 
@@ -34,16 +32,18 @@ public class InformationPensionnaireControleur implements Controleur, FichePerso
     private Label infoRefuge = new Label();
 
     @FXML
+    private Label infoSOS = new Label();
+
+    @FXML
     private Label infoDescriptif = new Label();
 
+
+    /** Informations sur le suivi médical */
     @FXML
     private Label infoPathologies = new Label();
 
     @FXML
     private Label infoSoins = new Label();
-
-    @FXML
-    private Label infoSOS = new Label();
 
 
 

@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class AdoptionControleur implements Controleur, FichePersonnelle
 {
-    /** Association FXML avec attributs */
+    /** Informations de bases sur la fiche personnelle du pensionnaire */
     @FXML
     private Label infoNumPuce = new Label();
 
@@ -50,6 +50,8 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
     @FXML
     private Label infoSOS = new Label();
 
+
+    /** Informations sur la fiche des frais */
     @FXML
     private Label infoCoutAnimal = new Label();
 
@@ -62,6 +64,8 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
     @FXML
     private TextField txtDon = new TextField();
 
+
+    /** Informations sur la fiche de l'adoptant */
     @FXML
     private TextField txtNumMaitre = new TextField();
 
@@ -77,6 +81,8 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
     @FXML
     private TextField txtAdresse = new TextField();
 
+
+    /** Label pour le retour visuel de l'utilisateur */
     @FXML
     private Label labelMessage = new Label();
 

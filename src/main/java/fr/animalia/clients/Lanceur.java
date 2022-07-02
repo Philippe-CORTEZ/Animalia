@@ -20,4 +20,3 @@ public class Lanceur
 // TODO : Refactor code contrôleur
 // TODO : Refactor FXML
 // TODO : Refactor code ClientREST
-// TODO : Transformer classe FicherPerso en interface

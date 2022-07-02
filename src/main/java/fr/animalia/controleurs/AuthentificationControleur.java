@@ -6,7 +6,7 @@ package fr.animalia.controleurs;
  */
 public class AuthentificationControleur implements Controleur
 {
-    /** Lorsque qu'un clic sur le bouton "connexion est fait", se connecte à un compte personnel */
+    /** Lorsque qu'un clic sur le bouton "connexion" est réalisé, se connecte à un compte personnel */
     public void connexion()
     {
         // Pour l'instant se contente de charger la fenetre suivante
