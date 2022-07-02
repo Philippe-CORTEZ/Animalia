@@ -16,7 +16,6 @@ public class Lanceur
 }
 
 
-// TODO : traitement des sorties (affichage)
 // TODO : Sectionner le bloc d'attribut FXML
 // TODO : Refactor code contrôleur
 // TODO : Refactor FXML
