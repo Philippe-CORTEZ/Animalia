@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="600.0" styleClass="degrade-diagonal" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.animalia.controleurs.MenuPrincipalControleur">
    <children>
-      <Label fx:id="labelMessage" layoutX="27.0" layoutY="349.0" prefHeight="17.0" prefWidth="190.0" styleClass="titre-formulaire">
+      <Label fx:id="labelMessage" layoutX="12.0" layoutY="349.0" prefHeight="48.0" prefWidth="235.0" styleClass="titre-formulaire">
          <font>
             <Font size="16.0" />
          </font>

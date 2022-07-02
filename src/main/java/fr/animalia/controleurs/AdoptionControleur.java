@@ -23,7 +23,7 @@ import java.util.List;
  * Contrôleur qui gère l'adoption d'un animal
  * @author Philippe CORTEZ
  */
-public class AdoptionControleur
+public class AdoptionControleur implements Controleur
 {
     /** Association FXML avec attributs */
     @FXML
@@ -134,10 +134,30 @@ public class AdoptionControleur
         // Si le champs don est vide alors le met a 0
         if(txtDon.getText().isEmpty()) txtDon.setText("0");
 
+        // Sinon verifie que la saisie est bien un nombre
+        else
+        {
+            if(!traiterSaisieNombre(txtDon.getText()))
+            {
+                labelMessage.setText("Saisir un nombre (champs don)");
+                return false;
+            }
+        }
+
+
         // Deux types de saisie possible
 
         // 1: seul le numero de maitre est renseigne
-        if(!txtNumMaitre.getText().isEmpty()) return true;
+        if(!txtNumMaitre.getText().isEmpty())
+        {
+            // Dans ce cas il faut encore verifie que la saisie est bien un nombre
+            if(!traiterSaisieNombre(txtNumMaitre.getText()))
+            {
+                labelMessage.setText("Saisir un nombre (champs numéro maître)");
+                return false;
+            }
+            return true;
+        }
 
         // 2: le numero de maitre n'est pas renseigne (creation de la personne avec son nom, prenom, date et adresse)
         if(!txtNom.getText().isEmpty() || !txtPrenom.getText().isEmpty()
@@ -169,10 +189,10 @@ public class AdoptionControleur
             if(txtNumMaitre.getText().isEmpty())
             {
                 Personne personne = Personne.builder()
-                        .nom(txtNom.getText())
-                        .prenom(txtPrenom.getText())
+                        .nom(traiterSaisieTexte(txtNom.getText()))
+                        .prenom(traiterSaisieTexte(txtPrenom.getText()))
                         .dateNaissance(choixDateNaissance.getValue())
-                        .adresse(txtAdresse.getText())
+                        .adresse(traiterSaisieTexte(txtAdresse.getText()))
                         .build();
 
                 maitre = ClientREST.getWebRessource().path("personnes").request().post(Entity.entity(personne, MediaType.APPLICATION_JSON), Personne.class);

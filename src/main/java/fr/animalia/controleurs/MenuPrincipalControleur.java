@@ -184,6 +184,7 @@ public class MenuPrincipalControleur implements Controleur
     {
         paneConsultation.toFront();
         paneEnregistrement.toBack();
+        labelMessage.setText("");
     }
 
     /** Affiche le formulaire d'enregistrement d'un pensionnaire */
@@ -191,6 +192,7 @@ public class MenuPrincipalControleur implements Controleur
     {
         paneEnregistrement.toFront();
         paneConsultation.toBack();
+        labelMessage.setText("");
     }
 
 }

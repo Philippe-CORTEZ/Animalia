@@ -14,3 +14,11 @@ public class Lanceur
         Application.launch(App.class);
     }
 }
+
+
+// TODO : traitement des entrees (textfield ect)
+// TODO : traitement des sorties (affichage)
+// TODO : Bouton pour recharger la liste pensionnaires
+// TODO : Sectionner le bloc d'attribut FXML
+// TODO : Refactor code contrôleur
+// TODO : Refactor FXML
