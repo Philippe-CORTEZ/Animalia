@@ -159,7 +159,7 @@ public class EnregistrementPensionnaireControleur implements Controleur
         return true;
     }
 
-    /** Réinitialise tous les champs de saisie pour un prochaine saisie */
+    /** Réinitialise tous les champs de saisie pour une prochaine saisie */
     private void reinitialiserChamps()
     {
         txtNumPuce.setText("");

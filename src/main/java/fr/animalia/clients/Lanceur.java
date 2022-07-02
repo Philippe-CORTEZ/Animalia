@@ -16,5 +16,4 @@ public class Lanceur
 }
 
 
-// TODO : Refactor code contrôleur
 // TODO : Refactor code ClientREST
