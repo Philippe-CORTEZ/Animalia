@@ -16,7 +16,5 @@ public class Lanceur
 }
 
 
-// TODO : Sectionner le bloc d'attribut FXML
 // TODO : Refactor code contrôleur
-// TODO : Refactor FXML
 // TODO : Refactor code ClientREST
