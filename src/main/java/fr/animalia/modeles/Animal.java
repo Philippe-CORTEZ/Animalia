@@ -1,6 +1,7 @@
 package fr.animalia.modeles;
 
 import com.fasterxml.jackson.annotation.*;
+import fr.animalia.controleurs.DonneeIHM;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -110,6 +111,17 @@ public class Animal implements Entite
     public String toString()
     {
         return id + " - " + nom;
+    }
+
+
+    /**
+     * Récupère les informations sur le dernier refuge de l'animal
+     * @return un objet de type InformationSejour
+     */
+    public InformationSejour recupererInformationsDernierRefuge()
+    {
+        int indexeDernierRefuge = informationSejours.size() - 1;
+        return informationSejours.get(indexeDernierRefuge);
     }
 
 }

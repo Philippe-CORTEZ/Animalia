@@ -32,7 +32,15 @@ public interface FichePersonnelle
         infoRace.setText(DonneeIHM.getAnimalSelectionne().getRace());
         infoSexe.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getSexe()));
         infoDateNaissance.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getDateNaissance()));
-        infoRefuge.setText(DonneeIHM.getAnimalSelectionne().getInformationSejours().get(DonneeIHM.getAnimalSelectionne().getInformationSejours().size() - 1).getRefuge().getNom());
+        infoRefuge.setText(DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().getRefuge().getNom());
+
+        // Si l'animal est adopte (son dernier refuge enregistrer n'est pas son refuge actuel)
+        // Rajoute la mention "adopte" apres le nom du refuge
+        if(!DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().isRefugeActuel())
+        {
+            infoRefuge.setText(infoRefuge.getText() + " - (Adopté)");
+        }
+
         infoDescriptif.setText(DonneeIHM.getAnimalSelectionne().getDescription());
 
         if(DonneeIHM.getAnimalSelectionne().isSos()) infoSOS.setText("Dispositif SOS");

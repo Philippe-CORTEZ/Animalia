@@ -1,6 +1,7 @@
 package fr.animalia.controleurs;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
@@ -46,6 +47,11 @@ public class InformationPensionnaireControleur implements Controleur, FichePerso
     private Label infoSoins = new Label();
 
 
+    /** Boutons de menu */
+    @FXML
+    private Button boutonAdopter = new Button();
+
+
 
     /** Initialise les valeurs de certains widgets */
     @FXML
@@ -58,6 +64,12 @@ public class InformationPensionnaireControleur implements Controleur, FichePerso
         // Initialise la section Suivi medical
        infoPathologies.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getPathologies()));
        infoSoins.setText(String.valueOf(DonneeIHM.getAnimalSelectionne().getSoins()));
+
+        // Si l'animal est adopte desactive le bouton "Adopter"
+        if(!DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().isRefugeActuel())
+        {
+            boutonAdopter.setDisable(true);
+        }
     }
 
 

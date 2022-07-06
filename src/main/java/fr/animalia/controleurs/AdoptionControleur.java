@@ -161,6 +161,13 @@ public class AdoptionControleur implements Controleur, FichePersonnelle
 
             // Mise a jour des informations de l'animal (sur l'adoption)
             DonneeIHM.getAnimalSelectionne().getInformationAdoptions().add(informationAdoption);
+
+            // Mise a jour des informations de l'animal (sur son sejour au refuge)
+            DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().setRefugeActuel(false);
+            DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().setDateFinSejour(LocalDate.now());
+            DonneeIHM.getAnimalSelectionne().recupererInformationsDernierRefuge().setMotifFinDeSejour("Adoption");
+
+            // Mise a jour en base de donnes
             ClientREST.getWebRessource().path("animaux/" + DonneeIHM.getAnimalSelectionne().getId())
                     .request().put(Entity.entity(DonneeIHM.getAnimalSelectionne(), MediaType.APPLICATION_JSON), Animal.class);
 
