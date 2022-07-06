@@ -82,7 +82,7 @@ public class Animal implements Entite
 
     /** Les informations de ses refuges (ainsi que lui actuel) */
     @Builder.Default
-    @OneToMany(mappedBy = "pensionnaire", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pensionnaire", cascade = CascadeType.ALL)
     private List<InformationSejour> informationSejours = new ArrayList<>();
 
 

@@ -2,10 +2,7 @@ package fr.animalia.controleurs;
 
 
 import fr.animalia.clients.ClientREST;
-import fr.animalia.modeles.Animal;
-import fr.animalia.modeles.InformationAdoption;
-import fr.animalia.modeles.Personne;
-import fr.animalia.modeles.Soin;
+import fr.animalia.modeles.*;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.MediaType;
 import javafx.fxml.FXML;
