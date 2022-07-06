@@ -17,3 +17,4 @@ public class Lanceur
 
 
 // TODO : Refactor code ClientREST
+// TODO : Remplacer certain PUT par PATCH
