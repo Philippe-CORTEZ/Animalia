@@ -15,7 +15,7 @@
             <!-- Les paramètres de connexions à la base de données -->
             <property name="jakarta.persistence.target-database" value="PostgreSQL"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/animalia"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://bdd:5432/animalia"/>
             <property name="jakarta.persistence.jdbc.user" value="animalia"/> <!-- pas sécurisé -->
             <property name="jakarta.persistence.jdbc.password" value="4nimaliA83"/> <!-- pas sécurisé -->
         </properties>
