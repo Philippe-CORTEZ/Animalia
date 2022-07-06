@@ -18,3 +18,5 @@ public class Lanceur
 
 // TODO : Refactor code ClientREST
 // TODO : Remplacer certain PUT par PATCH
+
+// TODO : Séparer proprement serveur et client dans des projets (package modèle partagé)
