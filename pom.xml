@@ -27,7 +27,7 @@
     <jackson.version>2.13.3</jackson.version>
     <jjwt.version>0.11.5</jjwt.version>
 
-    <main.class>fr.animalia.serveurs.DemarrerGrizzly</main.class>
+    <main.class>fr.animalia.clients.Lanceur</main.class>
   </properties>
 
 
