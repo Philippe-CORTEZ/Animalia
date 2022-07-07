@@ -64,8 +64,8 @@ Docker et docker compose sera aussi nécessaire pour l'exécution du projet
 Référez-vous à <a href="https://docs.docker.com/engine/install/">la page officielle Docker</a>, pour l'installer
 <br><br>
 
-Téléchargez ensuite les fichiers nécessaires à Animalia <a>ici</a>  
-(Un fichier "docker-compose.yml" et une archive "Animalia.jar")
+Téléchargez ensuite les fichiers nécessaires à Animalia <a href="https://github.com/Philippe-CORTEZ/Animalia/releases">ici</a>  
+(Prenez la dernière release. Un fichier "docker-compose.yml" et une archive "Animalia.jar")
 
 
 ### Exécution
