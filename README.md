@@ -55,13 +55,49 @@ Concernant les adoptions :
 
 ## Installation et exécution 
 
-A venir
+### Prérequis
+Tout d'abord assurez-vous d'avoir à minima un Java Runtime Environment (JRE) d'installé sur votre machine.  
+Si ce n'est pas le cas, visitez <a href="https://www.java.com/fr/">la page d'Oracle</a> pour l'installer
+<br><br>
+
+Docker et docker compose sera aussi nécessaire pour l'exécution du projet  
+Référez-vous à <a href="https://docs.docker.com/engine/install/">la page officielle Docker</a>, pour l'installer
+<br><br>
+
+Téléchargez ensuite les fichiers nécessaires à Animalia <a>ici</a>  
+(Un fichier "docker-compose.yml" et une archive "Animalia.jar")
+
+
+### Exécution
+Une fois tous les fichiers et outils en votre possession, placez-vous dans le même repertoire que les fichiers "docker-compose.yml" et l'archive JAR.   
+Lancer en tout premier lieu le serveur avec la commande suivante :  
+
+```bash
+docker-compose up  # (pour les versions 1 de docker compose)
+docker compose up  # (pour les versions 2 de docker compose)
+```
+
+Une fois le serveur lancé, vous pourrez lancer l'application cliente avec la commande :  
+
+```bash
+java -jar Animalia.jar  # (ou double clic sur l'archive JAR)
+```
 
 
 
-## Utilisation
+## Prochaines étapes
 
-A venir
+Le projet est bien entendu encore et toujours perfectible, voici quelques points à continuer pour le rendre encore et toujours meilleur :  
+
+Pour la partie cliente
+* Retour d'adoption
+* Modifier les informations d'un pensionnaire
+* Changement de refuge
+
+Pour la partie serveur
+* Pagination
+* Authentification
+* Mise à jour partielle
 
 
 
